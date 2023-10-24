@@ -17,64 +17,28 @@
 
 #pragma once
 
-#include <memory>
-
-#include <vrs/helpers/JobQueue.h>
+#include <vrs/DataLayout.h>
 #include <vrs/RecordFormat.h>
-#include <vrs/utils/PixelFrame.h>
-#include <vrs/utils/VideoFrameHandler.h>
+#include <vrs/StreamId.h>
+#include <vrs/StreamPlayer.h>
 #include <vrs/utils/VideoRecordFormatStreamPlayer.h>
 #include <rerun.hpp>
 
-/* #include "MetaDataCollector.h" */
-
-enum class FileReaderState;
-
 namespace rerun_vrs {
-
-    struct ImageJob {
-        ImageJob(vrs::ImageFormat imageFormat) : imageFormat{imageFormat} {}
-
-        vrs::ImageFormat imageFormat;
-        std::shared_ptr<vrs::utils::PixelFrame> frame;
-        std::vector<uint8_t> buffer;
-    };
-
     class RerunFramePlayer : public vrs::utils::VideoRecordFormatStreamPlayer {
       public:
         explicit RerunFramePlayer(vrs::StreamId id, rerun::RecordingStream& rec);
 
-        bool onDataLayoutRead(const vrs::CurrentRecord& r, size_t blockIndex, vrs::DataLayout&) override;
-        bool onImageRead(const vrs::CurrentRecord& r, size_t blockIndex, const vrs::ContentBlock&) override;
-
-        vrs::StreamId getId() const {
-            return id_;
-        }
-
-        void setEstimatedFps(int estimatedFps) {
-            estimatedFps_ = estimatedFps;
-        }
-
-        void imageJobsThreadActivity();
+        bool onDataLayoutRead(const vrs::CurrentRecord& r, size_t blockIndex, vrs::DataLayout&)
+            override;
+        bool onImageRead(const vrs::CurrentRecord& r, size_t blockIndex, const vrs::ContentBlock&)
+            override;
 
       private:
         rerun::RecordingStream& rec_;
-        bool needsConvertedFrame_{false};
         vrs::StreamId id_;
         std::string entityPath_;
-        /* MetaDataCollector descriptions_; */
-        bool blankMode_{true};
         bool enabled_{true};
-        bool firstImage_{true};
-        int estimatedFps_;
-        /* Fps dataFps_; */
-        FileReaderState state_{};
-
-        vrs::JobQueueWithThread<std::unique_ptr<ImageJob>> imageJobs_;
-
-        void convertFrame(std::shared_ptr<vrs::utils::PixelFrame>& frame);
-        void makeBlankFrame(std::shared_ptr<vrs::utils::PixelFrame>& frame);
-        void recycle(std::shared_ptr<vrs::utils::PixelFrame>& frame, bool inputNotConvertedFrame);
     };
 
 } // namespace rerun_vrs

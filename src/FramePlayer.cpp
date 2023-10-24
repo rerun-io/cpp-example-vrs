@@ -77,8 +77,9 @@ namespace rerun_vrs {
 
         if (frameValid) {
             // Log image to Rerun
-            // NOTE currently we need to construct a vector to log an image, this will
-            //  change in the future, see https://github.com/rerun-io/rerun/issues/3794
+            // NOTE Rerun assumes row major ordering for Images (i.e., TensorData) without any stride.
+            //   Right now we don't check this properly, and just assume that there is no extra padding
+            //   per pixel and / or per row.
             rec_.log(
                 add_quotes(id_.getName()).c_str(),
                 rerun::Image(

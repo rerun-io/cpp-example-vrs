@@ -24,11 +24,11 @@
 #include <vrs/IndexRecord.h>
 
 namespace rerun_vrs {
-    RerunFramePlayer::RerunFramePlayer(StreamId id, rerun::RecordingStream& rec)
+    RerunFramePlayer::RerunFramePlayer(vrs::StreamId id, rerun::RecordingStream& rec)
         : id_{id}, rec_{rec} {}
 
     bool RerunFramePlayer::onDataLayoutRead(
-        const CurrentRecord& record, size_t blockIndex, DataLayout& layout
+        const vrs::CurrentRecord& record, size_t blockIndex, vrs::DataLayout& layout
     ) {
         if (!enabled_)
             return false;
@@ -55,11 +55,11 @@ namespace rerun_vrs {
     }
 
     bool RerunFramePlayer::onImageRead(
-        const CurrentRecord& record, size_t /*blockIndex*/, const ContentBlock& contentBlock
+        const vrs::CurrentRecord& record, size_t /*blockIndex*/, const vrs::ContentBlock& contentBlock
     ) {
         /* std::cout << "onImageRead" << std::endl; */
         const auto& spec = contentBlock.image();
-        std::shared_ptr<PixelFrame> frame = getFrame(true);
+        std::shared_ptr<vrs::utils::PixelFrame> frame;
         const auto& imageFormat = spec.getImageFormat();
         const auto& imageFormatStr = spec.getImageFormatAsString();
         bool frameValid = false;
@@ -68,7 +68,7 @@ namespace rerun_vrs {
         /*           << std::endl; */
 
         if (imageFormat == vrs::ImageFormat::RAW) {
-            frameValid = PixelFrame::readRawFrame(frame, record.reader, spec);
+            frameValid = vrs::utils::PixelFrame::readRawFrame(frame, record.reader, spec);
             if (frameValid) {
                 // Log image to Rerun
                 // NOTE currently we need to construct a vector to log an image, this will
@@ -153,56 +153,45 @@ namespace rerun_vrs {
         /* } */
     }
 
-    void RerunFramePlayer::convertFrame(std::shared_ptr<PixelFrame>& frame) {
-        if (blankMode_) {
-            makeBlankFrame(frame);
-        } else {
-            std::shared_ptr<PixelFrame> convertedFrame =
-                needsConvertedFrame_ ? getFrame(false) : nullptr;
-            PixelFrame::normalizeFrame(frame, convertedFrame, false);
-            needsConvertedFrame_ = (frame != convertedFrame); // for next time!
-            if (needsConvertedFrame_) {
-                recycle(frame, true);
-                frame = std::move(convertedFrame);
-            }
-        }
+    void RerunFramePlayer::convertFrame(std::shared_ptr<vrs::utils::PixelFrame>& frame) {
+        /* if (blankMode_) { */
+        /*     makeBlankFrame(frame); */
+        /* } else { */
+        /*     std::shared_ptr<vrs::utils::PixelFrame> convertedFrame = */
+        /*         needsConvertedFrame_ ? getFrame(false) : nullptr; */
+        /*     vrs::utils::PixelFrame::normalizeFrame(frame, convertedFrame, false); */
+        /*     needsConvertedFrame_ = (frame != convertedFrame); // for next time! */
+        /*     if (needsConvertedFrame_) { */
+        /*         recycle(frame, true); */
+        /*         frame = std::move(convertedFrame); */
+        /*     } */
+        /* } */
     }
 
-    void RerunFramePlayer::makeBlankFrame(std::shared_ptr<PixelFrame>& frame) {
+    void RerunFramePlayer::makeBlankFrame(std::shared_ptr<vrs::utils::PixelFrame>& frame) {
         frame->init(vrs::PixelFormat::GREY8, frame->getWidth(), frame->getHeight());
         frame->blankFrame();
     }
 
-    std::shared_ptr<PixelFrame> RerunFramePlayer::getFrame(bool inputNotConvertedFrame) {
-        std::vector<std::shared_ptr<PixelFrame>>& frames =
-            inputNotConvertedFrame ? inputFrames_ : convertedframes_;
-        if (frames.empty()) {
-            return nullptr;
-        }
-        std::shared_ptr<PixelFrame> frame = std::move(frames.back());
-        frames.pop_back();
-        return frame;
-    }
-
     void RerunFramePlayer::recycle(
-        std::shared_ptr<PixelFrame>& frame, bool inputNotConvertedFrame
+        std::shared_ptr<vrs::utils::PixelFrame>& frame, bool inputNotConvertedFrame
     ) {
-        if (frame) {
-            {
-                std::vector<std::shared_ptr<PixelFrame>>& frames =
-                    inputNotConvertedFrame ? inputFrames_ : convertedframes_;
-                if (frames.size() < 10) {
-                    frames.emplace_back(std::move(frame));
-                }
-            }
-            frame.reset();
-        }
+        /* if (frame) { */
+        /*     { */
+        /*         std::vector<std::shared_ptr<vrs::utils::PixelFrame>>& frames = */
+        /*             inputNotConvertedFrame ? inputFrames_ : convertedframes_; */
+        /*         if (frames.size() < 10) { */
+        /*             frames.emplace_back(std::move(frame)); */
+        /*         } */
+        /*     } */
+        /*     frame.reset(); */
+        /* } */
     }
 
     void RerunFramePlayer::imageJobsThreadActivity() {
         std::unique_ptr<ImageJob> job;
         while (imageJobs_.waitForJob(job)) {
-            std::shared_ptr<PixelFrame> frame = std::move(job->frame);
+            std::shared_ptr<vrs::utils::PixelFrame> frame = std::move(job->frame);
             // if we're behind, we just drop images except the last one!
             while (imageJobs_.getJob(job)) {
                 recycle(frame, true);
@@ -214,7 +203,7 @@ namespace rerun_vrs {
                 frameValid = (frame != nullptr);
             } else {
                 if (!frame) {
-                    frame = std::make_shared<PixelFrame>();
+                    frame = std::make_shared<vrs::utils::PixelFrame>();
                 }
                 frameValid = frame->readCompressedFrame(job->buffer, job->imageFormat);
             }

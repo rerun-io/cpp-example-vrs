@@ -32,30 +32,22 @@ enum class FileReaderState;
 
 namespace rerun_vrs {
 
-    using ::vrs::ContentBlock;
-    using ::vrs::CurrentRecord;
-    using ::vrs::DataLayout;
-    using ::vrs::StreamId;
-    using ::vrs::StreamPlayer;
-    using ::vrs::utils::PixelFrame;
-    using ::vrs::utils::VideoRecordFormatStreamPlayer;
-
     struct ImageJob {
         ImageJob(vrs::ImageFormat imageFormat) : imageFormat{imageFormat} {}
 
         vrs::ImageFormat imageFormat;
-        std::shared_ptr<PixelFrame> frame;
+        std::shared_ptr<vrs::utils::PixelFrame> frame;
         std::vector<uint8_t> buffer;
     };
 
-    class RerunFramePlayer : public VideoRecordFormatStreamPlayer {
+    class RerunFramePlayer : public vrs::utils::VideoRecordFormatStreamPlayer {
       public:
-        explicit RerunFramePlayer(StreamId id, rerun::RecordingStream& rec);
+        explicit RerunFramePlayer(vrs::StreamId id, rerun::RecordingStream& rec);
 
-        bool onDataLayoutRead(const CurrentRecord& r, size_t blockIndex, DataLayout&) override;
-        bool onImageRead(const CurrentRecord& r, size_t blockIndex, const ContentBlock&) override;
+        bool onDataLayoutRead(const vrs::CurrentRecord& r, size_t blockIndex, vrs::DataLayout&) override;
+        bool onImageRead(const vrs::CurrentRecord& r, size_t blockIndex, const vrs::ContentBlock&) override;
 
-        StreamId getId() const {
+        vrs::StreamId getId() const {
             return id_;
         }
 
@@ -67,10 +59,8 @@ namespace rerun_vrs {
 
       private:
         rerun::RecordingStream& rec_;
-        std::vector<std::shared_ptr<PixelFrame>> inputFrames_;
-        std::vector<std::shared_ptr<PixelFrame>> convertedframes_;
         bool needsConvertedFrame_{false};
-        StreamId id_;
+        vrs::StreamId id_;
         /* MetaDataCollector descriptions_; */
         bool blankMode_{true};
         bool enabled_{true};
@@ -81,10 +71,9 @@ namespace rerun_vrs {
 
         vrs::JobQueueWithThread<std::unique_ptr<ImageJob>> imageJobs_;
 
-        void convertFrame(std::shared_ptr<PixelFrame>& frame);
-        void makeBlankFrame(std::shared_ptr<PixelFrame>& frame);
-        std::shared_ptr<PixelFrame> getFrame(bool inputNotConvertedFrame);
-        void recycle(std::shared_ptr<PixelFrame>& frame, bool inputNotConvertedFrame);
+        void convertFrame(std::shared_ptr<vrs::utils::PixelFrame>& frame);
+        void makeBlankFrame(std::shared_ptr<vrs::utils::PixelFrame>& frame);
+        void recycle(std::shared_ptr<vrs::utils::PixelFrame>& frame, bool inputNotConvertedFrame);
     };
 
 } // namespace rerun_vrs

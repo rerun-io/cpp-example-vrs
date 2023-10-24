@@ -11,7 +11,7 @@
 #include "FramePlayer.h"
 
 int main(int argc, const char* argv[]) {
-    auto rec = rerun::RecordingStream("rerun_example_cpp");
+    auto rec = rerun::RecordingStream("rerun_example_vrs");
     rec.connect().throw_on_failure();
 
     if (argc != 2) {

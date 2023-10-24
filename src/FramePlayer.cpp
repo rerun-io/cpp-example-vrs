@@ -24,6 +24,12 @@
 #include <vrs/IndexRecord.h>
 
 namespace rerun_vrs {
+    struct FrameNumberDataLayout : public vrs::AutoDataLayout {
+        vrs::DataPieceValue<uint64_t> frameNumber{"frame_number"};
+
+        vrs::AutoDataLayoutEnd endLayout;
+    };
+
     RerunFramePlayer::RerunFramePlayer(vrs::StreamId id, rerun::RecordingStream& rec)
         : id_{id}, rec_{rec} {}
 
@@ -34,29 +40,26 @@ namespace rerun_vrs {
             return false;
 
         rec_.set_time_seconds("timestamp", record.timestamp);
+        if (record.recordType == vrs::Record::Type::DATA) {
+            auto& config = getExpectedLayout<FrameNumberDataLayout>(layout, blockIndex);
+            uint64_t frame_number;
+            if (config.frameNumber.get(frame_number))
+                rec_.set_time_sequence("frame_number", frame_number);
+        }
 
-        /* std::cout << "onDataLayoutRead " << std::endl; */
-        std::ostringstream buffer;
-        layout.printLayoutCompact(buffer);
-        /* std::cout << buffer.str() << std::endl; */
         // TODO write this information to a markdown file
+        /* std::ostringstream buffer; */
+        /* layout.printLayoutCompact(buffer); */
+        /* std::cout << buffer.str() << std::endl; */
 
-        // TODO figure out image width and height ?
-
-        /* descriptions_.setDescription(record.recordType, blockIndex, text); */
-        /* if (firstImage_ && record.recordType == Record::Type::CONFIGURATION) { */
-        /*   vrs::DataPieceString* deviceType =
-   * layout.findDataPieceString("device_type"); */
-        /*   if (deviceType != nullptr) { */
-        /*     widget_->setDeviceType(deviceType->get()); */
-        /*   } */
-        /* } */
         return true; // read next blocks, if any
     }
 
     bool RerunFramePlayer::onImageRead(
-        const vrs::CurrentRecord& record, size_t /*blockIndex*/, const vrs::ContentBlock& contentBlock
+        const vrs::CurrentRecord& record, size_t /*blockIndex*/,
+        const vrs::ContentBlock& contentBlock
     ) {
+        /* std::cout << "onImageRead" << std::endl; */
         /* std::cout << "onImageRead" << std::endl; */
         const auto& spec = contentBlock.image();
         std::shared_ptr<vrs::utils::PixelFrame> frame;

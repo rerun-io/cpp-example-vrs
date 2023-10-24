@@ -25,6 +25,7 @@
 #include <rerun.hpp>
 
 namespace rerun_vrs {
+
     class RerunFramePlayer : public vrs::utils::VideoRecordFormatStreamPlayer {
       public:
         explicit RerunFramePlayer(vrs::StreamId id, rerun::RecordingStream& rec);

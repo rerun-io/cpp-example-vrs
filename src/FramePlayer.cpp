@@ -25,6 +25,7 @@
 #include <sstream>
 
 namespace rerun_vrs {
+
     struct FrameNumberDataLayout : public vrs::AutoDataLayout {
         vrs::DataPieceValue<uint64_t> frameNumber{"frame_number"};
 
@@ -97,4 +98,5 @@ namespace rerun_vrs {
         }
         return true;
     }
+
 } // namespace rerun_vrs

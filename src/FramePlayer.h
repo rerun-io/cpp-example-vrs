@@ -61,6 +61,7 @@ namespace rerun_vrs {
         rerun::RecordingStream& rec_;
         bool needsConvertedFrame_{false};
         vrs::StreamId id_;
+        std::string entityPath_;
         /* MetaDataCollector descriptions_; */
         bool blankMode_{true};
         bool enabled_{true};

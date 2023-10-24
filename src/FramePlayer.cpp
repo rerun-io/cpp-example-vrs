@@ -31,7 +31,7 @@ namespace rerun_vrs {
     };
 
     RerunFramePlayer::RerunFramePlayer(vrs::StreamId id, rerun::RecordingStream& rec)
-        : id_{id}, rec_{rec} {}
+        : id_{id}, rec_{rec}, entityPath_{add_quotes(id.getName())} {}
 
     bool RerunFramePlayer::onDataLayoutRead(
         const vrs::CurrentRecord& record, size_t blockIndex, vrs::DataLayout& layout
@@ -39,18 +39,29 @@ namespace rerun_vrs {
         if (!enabled_)
             return false;
 
+        std::ostringstream buffer;
+        layout.printLayoutCompact(buffer);
+        const auto& layout_str = buffer.str();
+
         rec_.set_time_seconds("timestamp", record.timestamp);
+
+        if (record.recordType == vrs::Record::Type::CONFIGURATION)
+            // NOTE this is meta data from the sensor that doesn't change over time and only comes
+            // in once in the beginning
+            rec_.log_timeless(
+                (entityPath_ + "/configuration").c_str(),
+                rerun::TextDocument(layout_str)
+            );
+
         if (record.recordType == vrs::Record::Type::DATA) {
             auto& config = getExpectedLayout<FrameNumberDataLayout>(layout, blockIndex);
             uint64_t frame_number;
             if (config.frameNumber.get(frame_number))
                 rec_.set_time_sequence("frame_number", frame_number);
-        }
 
-        // TODO write this information to a markdown file
-        /* std::ostringstream buffer; */
-        /* layout.printLayoutCompact(buffer); */
-        /* std::cout << buffer.str() << std::endl; */
+            // this is meta data per record and changes over time
+            rec_.log((entityPath_ + "/data").c_str(), rerun::TextDocument(layout_str));
+        }
 
         return true; // read next blocks, if any
     }

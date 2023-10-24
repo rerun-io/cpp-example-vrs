@@ -24,9 +24,6 @@
 #include <vrs/IndexRecord.h>
 
 namespace rerun_vrs {
-
-    using namespace std;
-
     RerunFramePlayer::RerunFramePlayer(StreamId id, rerun::RecordingStream& rec)
         : id_{id}, rec_{rec} {}
 
@@ -36,8 +33,10 @@ namespace rerun_vrs {
         if (!enabled_)
             return false;
 
+        rec_.set_time_seconds("timestamp", record.timestamp);
+
         /* std::cout << "onDataLayoutRead " << std::endl; */
-        ostringstream buffer;
+        std::ostringstream buffer;
         layout.printLayoutCompact(buffer);
         /* std::cout << buffer.str() << std::endl; */
         // TODO write this information to a markdown file
@@ -60,7 +59,7 @@ namespace rerun_vrs {
     ) {
         /* std::cout << "onImageRead" << std::endl; */
         const auto& spec = contentBlock.image();
-        shared_ptr<PixelFrame> frame = getFrame(true);
+        std::shared_ptr<PixelFrame> frame = getFrame(true);
         const auto& imageFormat = spec.getImageFormat();
         const auto& imageFormatStr = spec.getImageFormatAsString();
         bool frameValid = false;
@@ -154,11 +153,11 @@ namespace rerun_vrs {
         /* } */
     }
 
-    void RerunFramePlayer::convertFrame(shared_ptr<PixelFrame>& frame) {
+    void RerunFramePlayer::convertFrame(std::shared_ptr<PixelFrame>& frame) {
         if (blankMode_) {
             makeBlankFrame(frame);
         } else {
-            shared_ptr<PixelFrame> convertedFrame =
+            std::shared_ptr<PixelFrame> convertedFrame =
                 needsConvertedFrame_ ? getFrame(false) : nullptr;
             PixelFrame::normalizeFrame(frame, convertedFrame, false);
             needsConvertedFrame_ = (frame != convertedFrame); // for next time!
@@ -169,26 +168,28 @@ namespace rerun_vrs {
         }
     }
 
-    void RerunFramePlayer::makeBlankFrame(shared_ptr<PixelFrame>& frame) {
+    void RerunFramePlayer::makeBlankFrame(std::shared_ptr<PixelFrame>& frame) {
         frame->init(vrs::PixelFormat::GREY8, frame->getWidth(), frame->getHeight());
         frame->blankFrame();
     }
 
-    shared_ptr<PixelFrame> RerunFramePlayer::getFrame(bool inputNotConvertedFrame) {
-        vector<shared_ptr<PixelFrame>>& frames =
+    std::shared_ptr<PixelFrame> RerunFramePlayer::getFrame(bool inputNotConvertedFrame) {
+        std::vector<std::shared_ptr<PixelFrame>>& frames =
             inputNotConvertedFrame ? inputFrames_ : convertedframes_;
         if (frames.empty()) {
             return nullptr;
         }
-        shared_ptr<PixelFrame> frame = std::move(frames.back());
+        std::shared_ptr<PixelFrame> frame = std::move(frames.back());
         frames.pop_back();
         return frame;
     }
 
-    void RerunFramePlayer::recycle(shared_ptr<PixelFrame>& frame, bool inputNotConvertedFrame) {
+    void RerunFramePlayer::recycle(
+        std::shared_ptr<PixelFrame>& frame, bool inputNotConvertedFrame
+    ) {
         if (frame) {
             {
-                vector<shared_ptr<PixelFrame>>& frames =
+                std::vector<std::shared_ptr<PixelFrame>>& frames =
                     inputNotConvertedFrame ? inputFrames_ : convertedframes_;
                 if (frames.size() < 10) {
                     frames.emplace_back(std::move(frame));
@@ -199,9 +200,9 @@ namespace rerun_vrs {
     }
 
     void RerunFramePlayer::imageJobsThreadActivity() {
-        unique_ptr<ImageJob> job;
+        std::unique_ptr<ImageJob> job;
         while (imageJobs_.waitForJob(job)) {
-            shared_ptr<PixelFrame> frame = std::move(job->frame);
+            std::shared_ptr<PixelFrame> frame = std::move(job->frame);
             // if we're behind, we just drop images except the last one!
             while (imageJobs_.getJob(job)) {
                 recycle(frame, true);
@@ -213,7 +214,7 @@ namespace rerun_vrs {
                 frameValid = (frame != nullptr);
             } else {
                 if (!frame) {
-                    frame = make_shared<PixelFrame>();
+                    frame = std::make_shared<PixelFrame>();
                 }
                 frameValid = frame->readCompressedFrame(job->buffer, job->imageFormat);
             }

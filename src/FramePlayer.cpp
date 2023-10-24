@@ -45,13 +45,15 @@ namespace rerun_vrs {
 
         rec_.set_time_seconds("timestamp", record.timestamp);
 
-        if (record.recordType == vrs::Record::Type::CONFIGURATION)
+        if (record.recordType == vrs::Record::Type::CONFIGURATION) {
             // NOTE this is meta data from the sensor that doesn't change over time and only comes
             // in once in the beginning
             rec_.log_timeless(
                 (entityPath_ + "/configuration").c_str(),
                 rerun::TextDocument(layout_str)
             );
+            return false;
+        }
 
         if (record.recordType == vrs::Record::Type::DATA) {
             auto& config = getExpectedLayout<FrameNumberDataLayout>(layout, blockIndex);
@@ -70,101 +72,29 @@ namespace rerun_vrs {
         const vrs::CurrentRecord& record, size_t /*blockIndex*/,
         const vrs::ContentBlock& contentBlock
     ) {
-        /* std::cout << "onImageRead" << std::endl; */
-        /* std::cout << "onImageRead" << std::endl; */
-        const auto& spec = contentBlock.image();
         std::shared_ptr<vrs::utils::PixelFrame> frame;
-        const auto& imageFormat = spec.getImageFormat();
-        const auto& imageFormatStr = spec.getImageFormatAsString();
-        bool frameValid = false;
-        /* std::cout << spec.getWidth() << "x" << spec.getHeight() << " " */
-        /*           << spec.getPixelFormatAsString() << " " << spec.getImageFormatAsString() */
-        /*           << std::endl; */
+        bool frameValid = vrs::utils::PixelFrame::readFrame(frame, record.reader, contentBlock);
 
-        if (imageFormat == vrs::ImageFormat::RAW) {
-            frameValid = vrs::utils::PixelFrame::readRawFrame(frame, record.reader, spec);
-            if (frameValid) {
-                // Log image to Rerun
-                // NOTE currently we need to construct a vector to log an image, this will
-                //  change in the future, see https://github.com/rerun-io/rerun/issues/3794
-
-                rec_.log(
-                    add_quotes(id_.getName()).c_str(),
-                    rerun::Image(
-                        {spec.getHeight(), spec.getWidth(), spec.getChannelCountPerPixel()},
-                        std::move(frame->getBuffer())
-                    )
-                );
-            } else {
-                std::cout << "Failed reading raw frame." << std::endl;
-            }
-            /* if (!firstImage_ && frameValid) { */
-            /*   job = make_unique<ImageJob>(vrs::ImageFormat::RAW); */
-            /* } */
+        if (frameValid) {
+            // Log image to Rerun
+            // NOTE currently we need to construct a vector to log an image, this will
+            //  change in the future, see https://github.com/rerun-io/rerun/issues/3794
+            rec_.log(
+                add_quotes(id_.getName()).c_str(),
+                rerun::Image(
+                    {frame->getHeight(),
+                     frame->getWidth(),
+                     frame->getSpec().getChannelCountPerPixel()},
+                    std::move(frame->getBuffer())
+                )
+            );
         } else {
-            std::cout << "Image format \"" << imageFormatStr
-                      << "\" not supported. Disabling player." << std::endl;
+            std::cout << "Failed reading image with format \""
+                      << contentBlock.image().getImageFormatAsString() << "\". Disabling player."
+                      << std::endl;
             enabled_ = false;
         }
         return true; // read next blocks, if any
-
-        /* } else if (imageFormat_ == vrs::ImageFormat::VIDEO) { */
-        /*   // Video codec decompression happens here, but pixel format conversion is
-   * asynchronous */
-        /*   PixelFrame::init(frame, contentBlock.image()); */
-        /*   frameValid = (tryToDecodeFrame(*frame, record, contentBlock) == 0); */
-        /*   if (!firstImage_ && frameValid) { */
-        /*     job = make_unique<ImageJob>(vrs::ImageFormat::VIDEO); */
-        /*   } */
-        /* } else { */
-        /*   if (firstImage_) { */
-        /*     frameValid = PixelFrame::readFrame(frame, record.reader, contentBlock);
-   */
-        /*   } else { */
-        /*     // decoding & pixel format conversion happen asynchronously */
-        /*     job = make_unique<ImageJob>(imageFormat_); */
-        /*     job->buffer.resize(contentBlock.getBlockSize()); */
-        /*     frameValid = (record.reader->read(job->buffer) == 0); */
-        /*   } */
-        /* } */
-        /* if (frameValid && job) { */
-        /*   job->frame = std::move(frame); */
-        /*   imageJobs_.startThreadIfNeeded(&FramePlayer::imageJobsThreadActivity,
-   * this); */
-        /*   imageJobs_.sendJob(std::move(job)); */
-        /*   return true; */
-        /* } */
-        /* if (firstImage_) { */
-        /*   fmt::print( */
-        /*       "Found '{} - {}': {}, {}", */
-        /*       record.streamId.getNumericName(), */
-        /*       record.streamId.getTypeName(), */
-        /*       getCurrentRecordFormatReader()->recordFormat.asString(), */
-        /*       spec.asString()); */
-        /*   if (frameValid && spec.getImageFormat() != vrs::ImageFormat::RAW) { */
-        /*     fmt::print(" - {}", frame->getSpec().asString()); */
-        /*   } */
-        /*   blankMode_ = false; */
-        /* } */
-        /* if (frameValid) { */
-        /*   convertFrame(frame); */
-        /*   if (firstImage_) { */
-        /*     if (needsConvertedFrame_) { */
-        /*       fmt::print(" -> {}", frame->getSpec().asString()); */
-        /*     } */
-        /*     if (estimatedFps_ != 0) { */
-        /*       fmt::print(", {} fps", estimatedFps_); */
-        /*     } */
-        /*     frame->blankFrame(); */
-        /*     blankMode_ = true; */
-        /*   } */
-        /*   widget_->swapImage(frame); */
-        /* } */
-        /* recycle(frame, !needsConvertedFrame_); */
-        /* if (firstImage_) { */
-        /*   fmt::print("\n"); */
-        /*   firstImage_ = false; */
-        /* } */
     }
 
     void RerunFramePlayer::convertFrame(std::shared_ptr<vrs::utils::PixelFrame>& frame) {

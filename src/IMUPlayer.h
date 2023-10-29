@@ -1,4 +1,5 @@
 /* Modified from https://github.com/facebookresearch/vrs
+ * and https://github.com/facebookresearch/projectaria_tools
  *
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
@@ -25,21 +26,27 @@
 #include <rerun.hpp>
 
 namespace rerun_vrs {
-
-    class FramePlayer : public vrs::utils::VideoRecordFormatStreamPlayer {
+    class IMUPlayer : public vrs::RecordFormatStreamPlayer {
       public:
-        explicit FramePlayer(vrs::StreamId id, std::shared_ptr<rerun::RecordingStream> rec);
+        explicit IMUPlayer(vrs::StreamId id, std::shared_ptr<rerun::RecordingStream> rec);
 
         bool onDataLayoutRead(const vrs::CurrentRecord& r, size_t blockIndex, vrs::DataLayout&)
             override;
-        bool onImageRead(const vrs::CurrentRecord& r, size_t blockIndex, const vrs::ContentBlock&)
-            override;
 
       private:
+        void logAccelerometer(const std::array<float, 3>& accelMSec2);
+        void logGyroscope(const std::array<float, 3>& gyroRadSec);
+        void logMagnetometer(const std::array<float, 3>& magTesla);
+
         std::shared_ptr<rerun::RecordingStream> rec_;
         vrs::StreamId id_;
         std::string entityPath_;
         bool enabled_{true};
+        bool hasAccelerometer_;
+        bool hasGyroscope_;
+        bool hasMagnetometer_;
     };
+
+    bool mightContainIMUData(const vrs::StreamId& id);
 
 } // namespace rerun_vrs

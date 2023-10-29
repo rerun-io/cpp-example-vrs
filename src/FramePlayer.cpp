@@ -14,15 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-#include "FramePlayer.h"
-#include "utils.h"
-
-#include <vrs/DataLayout.h>
-#include <vrs/utils/PixelFrame.h>
 #include <iostream>
 #include <memory>
 #include <sstream>
+
+#include <vrs/DataLayout.h>
+#include <vrs/utils/PixelFrame.h>
+
+#include "FramePlayer.h"
+#include "utils.h"
 
 namespace rerun_vrs {
 
@@ -32,10 +32,10 @@ namespace rerun_vrs {
         vrs::AutoDataLayoutEnd endLayout;
     };
 
-    RerunFramePlayer::RerunFramePlayer(vrs::StreamId id, std::shared_ptr<rerun::RecordingStream> rec)
+    FramePlayer::FramePlayer(vrs::StreamId id, std::shared_ptr<rerun::RecordingStream> rec)
         : id_{id}, rec_{rec}, entityPath_{add_quotes(id.getName())} {}
 
-    bool RerunFramePlayer::onDataLayoutRead(
+    bool FramePlayer::onDataLayoutRead(
         const vrs::CurrentRecord& record, size_t blockIndex, vrs::DataLayout& layout
     ) {
         if (!enabled_)
@@ -69,7 +69,7 @@ namespace rerun_vrs {
         return true;
     }
 
-    bool RerunFramePlayer::onImageRead(
+    bool FramePlayer::onImageRead(
         const vrs::CurrentRecord& record, size_t /*blockIndex*/,
         const vrs::ContentBlock& contentBlock
     ) {

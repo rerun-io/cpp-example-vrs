@@ -10,7 +10,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 17)
 
 include(FetchContent)
-FetchContent_Declare(rerun_sdk URL https://build.rerun.io/commit/f3a5ae2/rerun_cpp_sdk.zip)
+FetchContent_Declare(rerun_sdk DOWNLOAD_EXTRACT_TIMESTAMP ON URL https://build.rerun.io/commit/2ec5ce7/rerun_cpp_sdk.zip)
 FetchContent_MakeAvailable(rerun_sdk)
 
 include(FetchContent)
@@ -20,6 +20,6 @@ FetchContent_MakeAvailable(vrslib)
 find_package(Eigen3 REQUIRED)
 find_package(OpenCV REQUIRED)
 
-add_executable(log_vrs src/main.cpp src/FramePlayer.cpp src/utils.cpp)
+add_executable(log_vrs src/main.cpp src/FramePlayer.cpp src/IMUPlayer.cpp src/utils.cpp)
 target_link_libraries(log_vrs Eigen3::Eigen ${OpenCV_LIBS} rerun_sdk vrslib vrs_utils)
 target_include_directories(log_vrs PRIVATE src)

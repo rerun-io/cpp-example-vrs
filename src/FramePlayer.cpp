@@ -32,7 +32,7 @@ namespace rerun_vrs {
         vrs::AutoDataLayoutEnd endLayout;
     };
 
-    RerunFramePlayer::RerunFramePlayer(vrs::StreamId id, rerun::RecordingStream& rec)
+    RerunFramePlayer::RerunFramePlayer(vrs::StreamId id, std::shared_ptr<rerun::RecordingStream> rec)
         : id_{id}, rec_{rec}, entityPath_{add_quotes(id.getName())} {}
 
     bool RerunFramePlayer::onDataLayoutRead(
@@ -45,12 +45,12 @@ namespace rerun_vrs {
         layout.printLayoutCompact(buffer);
         const auto& layout_str = buffer.str();
 
-        rec_.set_time_seconds("timestamp", record.timestamp);
+        rec_->set_time_seconds("timestamp", record.timestamp);
 
         if (record.recordType == vrs::Record::Type::CONFIGURATION) {
             // NOTE this is meta data from the sensor that doesn't change over time and only comes
             // in once in the beginning
-            rec_.log_timeless(
+            rec_->log_timeless(
                 (entityPath_ + "/configuration").c_str(),
                 rerun::TextDocument(layout_str)
             );
@@ -60,10 +60,10 @@ namespace rerun_vrs {
             auto& config = getExpectedLayout<FrameNumberDataLayout>(layout, blockIndex);
             uint64_t frame_number;
             if (config.frameNumber.get(frame_number))
-                rec_.set_time_sequence("frame_number", frame_number);
+                rec_->set_time_sequence("frame_number", frame_number);
 
             // this is meta data per record and changes over time
-            rec_.log((entityPath_ + "/data").c_str(), rerun::TextDocument(layout_str));
+            rec_->log((entityPath_ + "/data").c_str(), rerun::TextDocument(layout_str));
         }
 
         return true;
@@ -81,7 +81,7 @@ namespace rerun_vrs {
             // NOTE Rerun assumes row major ordering for Images (i.e., TensorData) without any stride.
             //   Right now we don't check this properly, and just assume that there is no extra padding
             //   per pixel and / or per row.
-            rec_.log(
+            rec_->log(
                 add_quotes(id_.getName()).c_str(),
                 rerun::Image(
                     {frame->getHeight(),

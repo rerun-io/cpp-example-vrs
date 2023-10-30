@@ -12,6 +12,9 @@ include(FetchContent)
 FetchContent_Declare(rerun_sdk URL https://build.rerun.io/commit/b7f404a/rerun_cpp_sdk.zip) # 2023-10-29
 FetchContent_MakeAvailable(rerun_sdk)
 
+# Don't build the VRS tools
+set(BUILD_TOOLS OFF)
+
 include(FetchContent)
 FetchContent_Declare(vrslib URL https://github.com/facebookresearch/vrs/archive/refs/tags/v1.1.0.zip)
 FetchContent_MakeAvailable(vrslib)

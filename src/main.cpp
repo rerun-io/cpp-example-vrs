@@ -14,7 +14,7 @@
 
 int main(int argc, const char* argv[]) {
     auto rec = std::make_shared<rerun::RecordingStream>("rerun_example_vrs");
-    rec->connect().throw_on_failure();
+    rec->spawn().exit_on_failure();
 
     if (argc != 2) {
         std::cout << "Usage: ./log_vrs path/to/vrsfile.vrs" << std::endl;

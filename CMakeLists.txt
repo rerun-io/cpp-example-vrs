@@ -9,7 +9,7 @@ if(NOT DEFINED CMAKE_CXX_STANDARD)
 endif()
 
 include(FetchContent)
-FetchContent_Declare(rerun_sdk URL https://build.rerun.io/commit/b7f404a/rerun_cpp_sdk.zip) # 2023-10-29
+FetchContent_Declare(rerun_sdk URL https://github.com/rerun-io/rerun/releases/download/0.10.0/rerun_cpp_sdk.zip)
 FetchContent_MakeAvailable(rerun_sdk)
 
 # Don't build the VRS tools

@@ -1,3 +1,5 @@
+# Build directory
 build
-compile_commands.json
-*.vrs
+
+# Pixi environment
+.pixi

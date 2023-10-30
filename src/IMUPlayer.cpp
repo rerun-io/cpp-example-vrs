@@ -44,7 +44,7 @@ namespace rerun_vrs {
         vrs::AutoDataLayoutEnd endLayout;
     };
 
-    IMUPlayer::IMUPlayer(vrs::StreamId id, std::shared_ptr<rerun::RecordingStream> rec)
+    IMUPlayer::IMUPlayer(vrs::StreamId id, std::shared_ptr<const rerun::RecordingStream> rec)
         : id_{id}, rec_{rec}, entityPath_{add_quotes(id.getName())} {}
 
     bool IMUPlayer::onDataLayoutRead(

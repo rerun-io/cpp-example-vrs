@@ -28,7 +28,7 @@
 namespace rerun_vrs {
     class IMUPlayer : public vrs::RecordFormatStreamPlayer {
       public:
-        explicit IMUPlayer(vrs::StreamId id, std::shared_ptr<rerun::RecordingStream> rec);
+        explicit IMUPlayer(vrs::StreamId id, std::shared_ptr<const rerun::RecordingStream> rec);
 
         bool onDataLayoutRead(const vrs::CurrentRecord& r, size_t blockIndex, vrs::DataLayout&)
             override;
@@ -38,7 +38,7 @@ namespace rerun_vrs {
         void logGyroscope(const std::array<float, 3>& gyroRadSec);
         void logMagnetometer(const std::array<float, 3>& magTesla);
 
-        std::shared_ptr<rerun::RecordingStream> rec_;
+        std::shared_ptr<const rerun::RecordingStream> rec_;
         vrs::StreamId id_;
         std::string entityPath_;
         bool enabled_{true};

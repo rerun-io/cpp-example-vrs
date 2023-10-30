@@ -32,7 +32,7 @@ namespace rerun_vrs {
         vrs::AutoDataLayoutEnd endLayout;
     };
 
-    FramePlayer::FramePlayer(vrs::StreamId id, std::shared_ptr<rerun::RecordingStream> rec)
+    FramePlayer::FramePlayer(vrs::StreamId id, std::shared_ptr<const rerun::RecordingStream> rec)
         : id_{id}, rec_{rec}, entityPath_{add_quotes(id.getName())} {}
 
     bool FramePlayer::onDataLayoutRead(

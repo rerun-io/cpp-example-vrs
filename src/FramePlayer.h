@@ -28,7 +28,7 @@ namespace rerun_vrs {
 
     class FramePlayer : public vrs::utils::VideoRecordFormatStreamPlayer {
       public:
-        explicit FramePlayer(vrs::StreamId id, std::shared_ptr<rerun::RecordingStream> rec);
+        explicit FramePlayer(vrs::StreamId id, std::shared_ptr<const rerun::RecordingStream> rec);
 
         bool onDataLayoutRead(const vrs::CurrentRecord& r, size_t blockIndex, vrs::DataLayout&)
             override;
@@ -36,7 +36,7 @@ namespace rerun_vrs {
             override;
 
       private:
-        std::shared_ptr<rerun::RecordingStream> rec_;
+        std::shared_ptr<const rerun::RecordingStream> rec_;
         vrs::StreamId id_;
         std::string entityPath_;
         bool enabled_{true};

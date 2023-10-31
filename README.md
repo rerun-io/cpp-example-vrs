@@ -9,7 +9,7 @@ The easiest way to get started is to install [pixi](https://prefix.dev/docs/pixi
 
 The pixi environment described in `pixi.toml` contains all of the dependencies, including the rerun viewer,
 allowing you to run the example with a single command:
-* `pixi run example`
+* `pixi run example dataset.vrs`
 
 ## Without `pixi`
 If you choose not to use pixi, you will need to install a few things yourself before you get started.

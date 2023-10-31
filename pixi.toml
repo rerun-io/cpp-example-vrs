@@ -41,8 +41,7 @@ boost = "1.82.0.*"
 cmake = "3.27.6"
 cxx-compiler = "1.6.0.*"
 ninja = "1.11.1"
-# Required by this example:
-eigen = "3.4.0.*"
+# Required by this example:~
 fmt = "10.1.1.*"
 gtest = "1.14.0"
 lz4 = "4.3.2.*"

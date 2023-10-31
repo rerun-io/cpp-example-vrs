@@ -19,10 +19,9 @@ include(FetchContent)
 FetchContent_Declare(vrslib URL https://github.com/facebookresearch/vrs/archive/refs/tags/v1.1.0.zip)
 FetchContent_MakeAvailable(vrslib)
 
-find_package(Eigen3 REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(fmt REQUIRED)
 
 add_executable(rerun_vrs_example src/main.cpp src/FramePlayer.cpp src/IMUPlayer.cpp src/utils.cpp)
-target_link_libraries(rerun_vrs_example Eigen3::Eigen ${OpenCV_LIBS} rerun_sdk vrslib vrs_utils fmt)
+target_link_libraries(rerun_vrs_example ${OpenCV_LIBS} rerun_sdk vrslib vrs_utils fmt)
 target_include_directories(rerun_vrs_example PRIVATE src)

@@ -5,8 +5,6 @@
 #include <vrs/RecordFileReader.h>
 #include <vrs/RecordFormatStreamPlayer.h>
 #include <vrs/StreamPlayer.h>
-#include <eigen3/Eigen/Core>
-#include <eigen3/Eigen/Dense>
 #include <rerun.hpp>
 
 #include "FramePlayer.h"

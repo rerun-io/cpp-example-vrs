@@ -1796,6 +1796,86 @@ package:
   size: 2523079
   timestamp: 1698351323119
 - platform: linux-64
+  name: jpeg
+  version: 9e
+  category: main
+  manager: conda
+  dependencies:
+  - libgcc-ng >=12
+  url: https://conda.anaconda.org/conda-forge/linux-64/jpeg-9e-h0b41bf4_3.conda
+  hash:
+    md5: c7a069243e1fbe9a556ed2ec030e6407
+    sha256: 8f73194d09c9ea4a7e2b3562766b8d72125cc147b62c7cf83393e3a3bbfd581b
+  build: h0b41bf4_3
+  arch: x86_64
+  subdir: linux-64
+  build_number: 3
+  constrains:
+  - libjpeg-turbo <0.0.0a
+  license: IJG
+  size: 240359
+  timestamp: 1676177310738
+- platform: osx-64
+  name: jpeg
+  version: 9e
+  category: main
+  manager: conda
+  dependencies: []
+  url: https://conda.anaconda.org/conda-forge/osx-64/jpeg-9e-hb7f2c08_3.conda
+  hash:
+    md5: 6b55131ae9445ef38746dc6b080acda9
+    sha256: 1ef5f9b4d9817820224c92b016da210b1356250d7272e16901c547e156b3e615
+  build: hb7f2c08_3
+  arch: x86_64
+  subdir: osx-64
+  build_number: 3
+  constrains:
+  - libjpeg-turbo <0.0.0a
+  license: IJG
+  size: 231847
+  timestamp: 1676177453517
+- platform: osx-arm64
+  name: jpeg
+  version: 9e
+  category: main
+  manager: conda
+  dependencies: []
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/jpeg-9e-h1a8c8d9_3.conda
+  hash:
+    md5: ef1cce2ab799e0c2f32c3344125ff218
+    sha256: 7e21d03917fb535b39c3af0cc7b7115617556a4ca2fe13018c09407987883b34
+  build: h1a8c8d9_3
+  arch: aarch64
+  subdir: osx-arm64
+  build_number: 3
+  constrains:
+  - libjpeg-turbo <0.0.0a
+  license: IJG
+  size: 218587
+  timestamp: 1676177519876
+- platform: win-64
+  name: jpeg
+  version: 9e
+  category: main
+  manager: conda
+  dependencies:
+  - ucrt >=10.0.20348.0
+  - vc >=14.2,<15
+  - vs2015_runtime >=14.29.30139
+  url: https://conda.anaconda.org/conda-forge/win-64/jpeg-9e-hcfcfb64_3.conda
+  hash:
+    md5: 824f1e030d224e9e376a4655032fdbc7
+    sha256: 7ee2ecbb5fe11566601e612fa463fc2060e55083d9cb1eb05c58e30a9e110b41
+  build: hcfcfb64_3
+  arch: x86_64
+  subdir: win-64
+  build_number: 3
+  constrains:
+  - libjpeg-turbo <0.0.0a
+  license: IJG
+  size: 289378
+  timestamp: 1676178492989
+- platform: linux-64
   name: kernel-headers_linux-64
   version: 2.6.32
   category: main

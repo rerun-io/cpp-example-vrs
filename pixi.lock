@@ -1802,79 +1802,70 @@ package:
   manager: conda
   dependencies:
   - libgcc-ng >=12
-  url: https://conda.anaconda.org/conda-forge/linux-64/jpeg-9e-h0b41bf4_3.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/jpeg-9e-h166bdaf_2.tar.bz2
   hash:
-    md5: c7a069243e1fbe9a556ed2ec030e6407
-    sha256: 8f73194d09c9ea4a7e2b3562766b8d72125cc147b62c7cf83393e3a3bbfd581b
-  build: h0b41bf4_3
+    md5: ee8b844357a0946870901c7c6f418268
+    sha256: 0110ee167e8fe386f9019f98757e299a0c42dc6ccdcce161c9bb552b79e459a3
+  build: h166bdaf_2
   arch: x86_64
   subdir: linux-64
-  build_number: 3
-  constrains:
-  - libjpeg-turbo <0.0.0a
+  build_number: 2
   license: IJG
-  size: 240359
-  timestamp: 1676177310738
+  size: 275125
+  timestamp: 1656500806614
 - platform: osx-64
   name: jpeg
   version: 9e
   category: main
   manager: conda
   dependencies: []
-  url: https://conda.anaconda.org/conda-forge/osx-64/jpeg-9e-hb7f2c08_3.conda
+  url: https://conda.anaconda.org/conda-forge/osx-64/jpeg-9e-hac89ed1_2.tar.bz2
   hash:
-    md5: 6b55131ae9445ef38746dc6b080acda9
-    sha256: 1ef5f9b4d9817820224c92b016da210b1356250d7272e16901c547e156b3e615
-  build: hb7f2c08_3
+    md5: 60d90a3f5803660c5c2a2e9d883df0a6
+    sha256: 3bb611fc9fa6a5669aa371ac8b10e0e420689f69f0b7993955d76d8ddddc5e5d
+  build: hac89ed1_2
   arch: x86_64
   subdir: osx-64
-  build_number: 3
-  constrains:
-  - libjpeg-turbo <0.0.0a
+  build_number: 2
   license: IJG
-  size: 231847
-  timestamp: 1676177453517
+  size: 266671
+  timestamp: 1656501289943
 - platform: osx-arm64
   name: jpeg
   version: 9e
   category: main
   manager: conda
   dependencies: []
-  url: https://conda.anaconda.org/conda-forge/osx-arm64/jpeg-9e-h1a8c8d9_3.conda
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/jpeg-9e-he4db4b2_2.tar.bz2
   hash:
-    md5: ef1cce2ab799e0c2f32c3344125ff218
-    sha256: 7e21d03917fb535b39c3af0cc7b7115617556a4ca2fe13018c09407987883b34
-  build: h1a8c8d9_3
+    md5: ad1e3584bfef678a4ca6f9daa6695159
+    sha256: 1175af9e55cb8a8bf24102c9aa9233f2a8d83845f2c01773c2a364a4c889464b
+  build: he4db4b2_2
   arch: aarch64
   subdir: osx-arm64
-  build_number: 3
-  constrains:
-  - libjpeg-turbo <0.0.0a
+  build_number: 2
   license: IJG
-  size: 218587
-  timestamp: 1676177519876
+  size: 265558
+  timestamp: 1656501164015
 - platform: win-64
   name: jpeg
   version: 9e
   category: main
   manager: conda
   dependencies:
-  - ucrt >=10.0.20348.0
-  - vc >=14.2,<15
-  - vs2015_runtime >=14.29.30139
-  url: https://conda.anaconda.org/conda-forge/win-64/jpeg-9e-hcfcfb64_3.conda
+  - vc >=14.1,<15
+  - vs2015_runtime >=14.16.27033
+  url: https://conda.anaconda.org/conda-forge/win-64/jpeg-9e-h8ffe710_2.tar.bz2
   hash:
-    md5: 824f1e030d224e9e376a4655032fdbc7
-    sha256: 7ee2ecbb5fe11566601e612fa463fc2060e55083d9cb1eb05c58e30a9e110b41
-  build: hcfcfb64_3
+    md5: 733066523147548ce368a9bd0c8395af
+    sha256: 78d6cc57536f0fc1e824a0aebfd3b2524f0f1e8c2b908024b8c08464387f1fe2
+  build: h8ffe710_2
   arch: x86_64
   subdir: win-64
-  build_number: 3
-  constrains:
-  - libjpeg-turbo <0.0.0a
+  build_number: 2
   license: IJG
-  size: 289378
-  timestamp: 1676178492989
+  size: 374749
+  timestamp: 1656501516281
 - platform: linux-64
   name: kernel-headers_linux-64
   version: 2.6.32
@@ -3636,6 +3627,77 @@ package:
   license: GPL and LGPL
   size: 714518
   timestamp: 1652702326553
+- platform: linux-64
+  name: libjpeg-turbo
+  version: 2.1.4
+  category: main
+  manager: conda
+  dependencies:
+  - libgcc-ng >=12
+  url: https://conda.anaconda.org/conda-forge/linux-64/libjpeg-turbo-2.1.4-h166bdaf_0.tar.bz2
+  hash:
+    md5: b4f717df2d377410b462328bf0e8fb7d
+    sha256: 0d8b666ca4deabf948a76654df0fa1277145bed1c9e8a58e18a649c22c5f1c3e
+  build: h166bdaf_0
+  arch: x86_64
+  subdir: linux-64
+  build_number: 0
+  license: IJG, modified 3-clause BSD and zlib
+  size: 1011471
+  timestamp: 1664781971968
+- platform: osx-64
+  name: libjpeg-turbo
+  version: 2.1.4
+  category: main
+  manager: conda
+  dependencies: []
+  url: https://conda.anaconda.org/conda-forge/osx-64/libjpeg-turbo-2.1.4-hb7f2c08_0.tar.bz2
+  hash:
+    md5: a8adc43e4b09be9c2ddbf89900956db2
+    sha256: a4c086d223fc82160cee1667d0a2a7da8b65f78f5bcda444cb5627c2232c83e3
+  build: hb7f2c08_0
+  arch: x86_64
+  subdir: osx-64
+  build_number: 0
+  license: IJG, modified 3-clause BSD and zlib
+  size: 944447
+  timestamp: 1664782186056
+- platform: osx-arm64
+  name: libjpeg-turbo
+  version: 2.1.4
+  category: main
+  manager: conda
+  dependencies: []
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/libjpeg-turbo-2.1.4-h1a8c8d9_0.tar.bz2
+  hash:
+    md5: bd550dd10ccf96d75a16a0d7194aacf7
+    sha256: 34dc289e85fbfabbf763edf6ad83dba25d11934749580ef1d4080fbacf3530f3
+  build: h1a8c8d9_0
+  arch: aarch64
+  subdir: osx-arm64
+  build_number: 0
+  license: IJG, modified 3-clause BSD and zlib
+  size: 854754
+  timestamp: 1664782154413
+- platform: win-64
+  name: libjpeg-turbo
+  version: 2.1.4
+  category: main
+  manager: conda
+  dependencies:
+  - vc >=14.2,<15
+  - vs2015_runtime >=14.29.30139
+  url: https://conda.anaconda.org/conda-forge/win-64/libjpeg-turbo-2.1.4-hcfcfb64_0.tar.bz2
+  hash:
+    md5: 24bf30c2957c1bf33b3e1131a88ae17d
+    sha256: ed081ab5e51b516723f30b49a84f1b5bb201d46d6da58de0ab435df3f01d4eb0
+  build: hcfcfb64_0
+  arch: x86_64
+  subdir: win-64
+  build_number: 0
+  license: IJG, modified 3-clause BSD and zlib
+  size: 1382080
+  timestamp: 1664782569577
 - platform: linux-64
   name: liblapack
   version: 3.9.0

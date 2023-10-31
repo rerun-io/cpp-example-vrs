@@ -1,30 +1,32 @@
-# C++ Example: VRS Viewer 
+# C++ Example: VRS Viewer
 
 This is an example that shows how to use [Rerun](https://github.com/rerun-io/rerun)'s C++ API to log and view VRS files.
 
-## Installing the Rerun viewer
+You can get a sample `.vrs` file at <https://www.projectaria.com/datasets/apd/#download-dataset>.
+
+## Using `pixi`
+The easiest way to get started is to install [pixi](https://prefix.dev/docs/pixi/overview).
+
+The pixi environment described in `pixi.toml` contains all of the dependencies, including the rerun viewer,
+allowing you to run the example with a single command:
+* `pixi run example`
+
+## Without `pixi`
+If you choose not to use pixi, you will need to install a few things yourself before you get started.
+
+### Installing the Rerun Viewer
 The Rerun C++ SDK works by connecting to an awaiting Rerun Viewer over TCP.
 
-#### Building from source
-* [Install `cargo`](https://rustup.rs/)
-* `cargo install rerun-cli`
+If you need to install the viewer, follow the [installation guide](https://www.rerun.io/docs/getting-started/installing-viewer). Two of the more common ways to install the Rerun are:
+* Via cargo: `cargo install rerun-cli`
+* Via pip: `pip install rerun-sdk`
 
-#### Using `pip`
-* `pip install rerun-sdk`
+After you have installed it, you should be able to type `rerun` in your terminal to start the viewer.
 
-### Running the Rerun viewer
-Just type `rerun` and the rerun viewer should show up. Then it is time to run this example!
+### Build on Linux & Mac
 
-
-## How to build and run
-
+Build:
 ```bash
-mkdir build
-cd build
-cmake ..
-cmake --build .
+cmake -B build
+cmake --build build -j
 ```
-
----------------------------
-
-TODO: Pixi describe setup etc.

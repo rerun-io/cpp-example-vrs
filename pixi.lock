@@ -670,7 +670,7 @@ package:
   manager: conda
   dependencies:
   - fontconfig >=2.14.2,<3.0a0
-  - fonts-conda-ecosystem *
+  - fonts-conda-ecosystem
   - freetype >=2.12.1,<3.0a0
   - icu >=73.2,<74.0a0
   - libglib >=2.78.0,<3.0a0
@@ -680,7 +680,7 @@ package:
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
   - vc14_runtime >=14.29.30139
-  - zlib *
+  - zlib
   url: https://conda.anaconda.org/conda-forge/win-64/cairo-1.18.0-h1fef639_0.conda
   hash:
     md5: b3fe2c6381ec74afe8128e16a11eee02
@@ -1359,7 +1359,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - vs2019_win-64 *
+  - vs2019_win-64
   url: https://conda.anaconda.org/conda-forge/win-64/cxx-compiler-1.6.0-h91493d7_0.conda
   hash:
     md5: b1219f0b49bd243c7139cb9c42c4710c
@@ -1611,7 +1611,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libexpat ==2.5.0 h63175ca_1
+  - libexpat 2.5.0 h63175ca_1
   url: https://conda.anaconda.org/conda-forge/win-64/expat-2.5.0-h63175ca_1.conda
   hash:
     md5: 87c77fe1b445aedb5c6d207dd236fa3e
@@ -1749,7 +1749,7 @@ package:
   - bzip2 >=1.0.8,<2.0a0
   - dav1d >=1.2.1,<1.2.2.0a0
   - fontconfig >=2.14.2,<3.0a0
-  - fonts-conda-ecosystem *
+  - fonts-conda-ecosystem
   - freetype >=2.12.1,<3.0a0
   - libopus >=1.3.1,<2.0a0
   - libxml2 >=2.11.5,<2.12.0a0
@@ -2312,7 +2312,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - fonts-conda-forge *
+  - fonts-conda-forge
   url: https://conda.anaconda.org/conda-forge/noarch/fonts-conda-ecosystem-1-0.tar.bz2
   hash:
     md5: fee5683a3f04bd15cbd8318b096a27ab
@@ -2401,10 +2401,10 @@ package:
   category: main
   manager: conda
   dependencies:
-  - font-ttf-dejavu-sans-mono *
-  - font-ttf-inconsolata *
-  - font-ttf-source-code-pro *
-  - font-ttf-ubuntu *
+  - font-ttf-dejavu-sans-mono
+  - font-ttf-inconsolata
+  - font-ttf-source-code-pro
+  - font-ttf-ubuntu
   url: https://conda.anaconda.org/conda-forge/noarch/fonts-conda-forge-1-0.tar.bz2
   hash:
     md5: f766549260d6815b0c52253f1fb1bb29
@@ -2765,8 +2765,8 @@ package:
   manager: conda
   dependencies:
   - gettext >=0.21.1,<1.0a0
-  - glib-tools ==2.78.0 h12be248_0
-  - libglib ==2.78.0 he8f3873_0
+  - glib-tools 2.78.0 h12be248_0
+  - libglib 2.78.0 he8f3873_0
   - libzlib >=1.2.13,<1.3.0a0
   - python *
   - ucrt >=10.0.20348.0
@@ -2810,7 +2810,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libglib ==2.78.0 he8f3873_0
+  - libglib 2.78.0 he8f3873_0
   - libzlib >=1.2.13,<1.3.0a0
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
@@ -3069,7 +3069,7 @@ package:
   manager: conda
   dependencies:
   - gettext >=0.21.1,<1.0a0
-  - gstreamer ==1.22.6 hb4038d2_2
+  - gstreamer 1.22.6 hb4038d2_2
   - libglib >=2.78.0,<3.0a0
   - libogg >=1.3.4,<1.4.0a0
   - libvorbis >=1.3.7,<1.4.0a0
@@ -3370,7 +3370,7 @@ package:
   dependencies:
   - cairo >=1.16.0,<2.0a0
   - freetype >=2.12.1,<3.0a0
-  - graphite2 *
+  - graphite2
   - icu >=73.2,<74.0a0
   - libglib >=2.78.0,<3.0a0
   - ucrt >=10.0.20348.0
@@ -4388,7 +4388,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - mkl ==2023.2.0 h6a75c08_50496
+  - mkl 2023.2.0 h6a75c08_50496
   url: https://conda.anaconda.org/conda-forge/win-64/libblas-3.9.0-19_win64_mkl.conda
   hash:
     md5: 4f8a1a63cfbf74bc7b2813d9c6c205be
@@ -4964,7 +4964,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libblas ==3.9.0 19_win64_mkl
+  - libblas 3.9.0 19_win64_mkl
   url: https://conda.anaconda.org/conda-forge/win-64/libcblas-3.9.0-19_win64_mkl.conda
   hash:
     md5: 1b9ede5cff953aa1a5f4d9f8ec644972
@@ -5010,7 +5010,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libclang13 ==15.0.7 default_h77d9078_3
+  - libclang13 15.0.7 default_h77d9078_3
   - libzlib >=1.2.13,<1.3.0a0
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
@@ -6047,7 +6047,7 @@ package:
   manager: conda
   dependencies:
   - libxml2 >=2.11.5,<2.12.0a0
-  - pthreads-win32 *
+  - pthreads-win32
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
   - vc14_runtime >=14.29.30139
@@ -6347,7 +6347,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libblas ==3.9.0 19_win64_mkl
+  - libblas 3.9.0 19_win64_mkl
   url: https://conda.anaconda.org/conda-forge/win-64/liblapack-3.9.0-19_win64_mkl.conda
   hash:
     md5: 574e6e8bcc85df2885eb2a87d31ae005
@@ -6439,9 +6439,9 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libblas ==3.9.0 19_win64_mkl
-  - libcblas ==3.9.0 19_win64_mkl
-  - liblapack ==3.9.0 19_win64_mkl
+  - libblas 3.9.0 19_win64_mkl
+  - libcblas 3.9.0 19_win64_mkl
+  - liblapack 3.9.0 19_win64_mkl
   url: https://conda.anaconda.org/conda-forge/win-64/liblapacke-3.9.0-19_win64_mkl.conda
   hash:
     md5: c77175c01902a5a8eb9e5598bd9e7756
@@ -7080,7 +7080,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libopenvino ==2023.1.0 h63175ca_1
+  - libopenvino 2023.1.0 h63175ca_1
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
   - vc14_runtime >=14.29.30139
@@ -7160,7 +7160,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libopenvino ==2023.1.0 h63175ca_1
+  - libopenvino 2023.1.0 h63175ca_1
   - tbb >=2021.5.0
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
@@ -7241,7 +7241,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libopenvino ==2023.1.0 h63175ca_1
+  - libopenvino 2023.1.0 h63175ca_1
   - pugixml >=1.14,<1.15.0a0
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
@@ -7304,7 +7304,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libopenvino ==2023.1.0 h63175ca_1
+  - libopenvino 2023.1.0 h63175ca_1
   - pugixml >=1.14,<1.15.0a0
   - tbb >=2021.5.0
   - ucrt >=10.0.20348.0
@@ -7350,7 +7350,7 @@ package:
   manager: conda
   dependencies:
   - khronos-opencl-icd-loader >=2023.4.17
-  - libopenvino ==2023.1.0 h63175ca_1
+  - libopenvino 2023.1.0 h63175ca_1
   - pugixml >=1.14,<1.15.0a0
   - tbb >=2021.5.0
   - ucrt >=10.0.20348.0
@@ -7432,7 +7432,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libopenvino ==2023.1.0 h63175ca_1
+  - libopenvino 2023.1.0 h63175ca_1
   - pugixml >=1.14,<1.15.0a0
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
@@ -7510,7 +7510,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libopenvino ==2023.1.0 h63175ca_1
+  - libopenvino 2023.1.0 h63175ca_1
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
   - vc14_runtime >=14.29.30139
@@ -7587,7 +7587,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libopenvino ==2023.1.0 h63175ca_1
+  - libopenvino 2023.1.0 h63175ca_1
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
   - vc14_runtime >=14.29.30139
@@ -7664,7 +7664,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libopenvino ==2023.1.0 h63175ca_1
+  - libopenvino 2023.1.0 h63175ca_1
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
   - vc14_runtime >=14.29.30139
@@ -7744,7 +7744,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libopenvino ==2023.1.0 h63175ca_1
+  - libopenvino 2023.1.0 h63175ca_1
   - snappy >=1.1.10,<2.0a0
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
@@ -7822,7 +7822,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libopenvino ==2023.1.0 h63175ca_1
+  - libopenvino 2023.1.0 h63175ca_1
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
   - vc14_runtime >=14.29.30139
@@ -8098,6 +8098,7 @@ package:
   category: main
   manager: conda
   dependencies:
+  - libabseil * cxx17*
   - libabseil >=20230802.1,<20230803.0a0
   - libzlib >=1.2.13,<1.3.0a0
   - ucrt >=10.0.20348.0
@@ -9204,6 +9205,95 @@ package:
   size: 10034129
   timestamp: 1690530165545
 - platform: linux-64
+  name: lz4
+  version: 4.3.2
+  category: main
+  manager: conda
+  dependencies:
+  - libgcc-ng >=12
+  - lz4-c >=1.9.3,<1.10.0a0
+  - python >=3.12.0rc3,<3.13.0a0
+  - python_abi 3.12.* *_cp312
+  url: https://conda.anaconda.org/conda-forge/linux-64/lz4-4.3.2-py312h03f37cb_1.conda
+  hash:
+    md5: 2b9b564bbdb246f9ee242cc48700962c
+    sha256: 072bca35198cb3b7d12edd8457d57420891a54a2b9b7b7b0a54a893a6f861ffc
+  build: py312h03f37cb_1
+  arch: x86_64
+  subdir: linux-64
+  build_number: 1
+  license: BSD-3-Clause
+  license_family: BSD
+  size: 38927
+  timestamp: 1695448875393
+- platform: osx-64
+  name: lz4
+  version: 4.3.2
+  category: main
+  manager: conda
+  dependencies:
+  - lz4-c >=1.9.3,<1.10.0a0
+  - python >=3.12.0rc3,<3.13.0a0
+  - python_abi 3.12.* *_cp312
+  url: https://conda.anaconda.org/conda-forge/osx-64/lz4-4.3.2-py312h47ce1b8_1.conda
+  hash:
+    md5: 6bb18ec37b2d1d667de5ad28f343cdcf
+    sha256: daa1c17700368e0a28b78acc8d4e0b6bc1a63ba1e0804cc7e79167258bdc67d7
+  build: py312h47ce1b8_1
+  arch: x86_64
+  subdir: osx-64
+  build_number: 1
+  license: BSD-3-Clause
+  license_family: BSD
+  size: 36323
+  timestamp: 1695449013521
+- platform: osx-arm64
+  name: lz4
+  version: 4.3.2
+  category: main
+  manager: conda
+  dependencies:
+  - lz4-c >=1.9.3,<1.10.0a0
+  - python >=3.12.0rc3,<3.13.0a0
+  - python >=3.12.0rc3,<3.13.0a0 *_cpython
+  - python_abi 3.12.* *_cp312
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/lz4-4.3.2-py312h6bf82f4_1.conda
+  hash:
+    md5: 38e0a9ec5ea6f542e9d1685482fd869f
+    sha256: 73d2bcb8c53653544237faef18c72840b954ec18d5c2257d82c56e11771d7af5
+  build: py312h6bf82f4_1
+  arch: aarch64
+  subdir: osx-arm64
+  build_number: 1
+  license: BSD-3-Clause
+  license_family: BSD
+  size: 111275
+  timestamp: 1695449251029
+- platform: win-64
+  name: lz4
+  version: 4.3.2
+  category: main
+  manager: conda
+  dependencies:
+  - lz4-c >=1.9.3,<1.10.0a0
+  - python >=3.12.0rc3,<3.13.0a0
+  - python_abi 3.12.* *_cp312
+  - ucrt >=10.0.20348.0
+  - vc >=14.2,<15
+  - vc14_runtime >=14.29.30139
+  url: https://conda.anaconda.org/conda-forge/win-64/lz4-4.3.2-py312h594ca44_1.conda
+  hash:
+    md5: 113180edd2c65f58df1183f4ab748aa7
+    sha256: 318d71d51d486c697c99941e279dc9bb97891f2faa52333d634d585fd2962e54
+  build: py312h594ca44_1
+  arch: x86_64
+  subdir: win-64
+  build_number: 1
+  license: BSD-3-Clause
+  license_family: BSD
+  size: 76016
+  timestamp: 1695449182769
+- platform: linux-64
   name: lz4-c
   version: 1.9.4
   category: main
@@ -9223,6 +9313,65 @@ package:
   license_family: BSD
   size: 143402
   timestamp: 1674727076728
+- platform: osx-64
+  name: lz4-c
+  version: 1.9.4
+  category: main
+  manager: conda
+  dependencies:
+  - libcxx >=14.0.6
+  url: https://conda.anaconda.org/conda-forge/osx-64/lz4-c-1.9.4-hf0c8a7f_0.conda
+  hash:
+    md5: aa04f7143228308662696ac24023f991
+    sha256: 39aa0c01696e4e202bf5e337413de09dfeec061d89acd5f28e9968b4e93c3f48
+  build: hf0c8a7f_0
+  arch: x86_64
+  subdir: osx-64
+  build_number: 0
+  license: BSD-2-Clause
+  license_family: BSD
+  size: 156415
+  timestamp: 1674727335352
+- platform: osx-arm64
+  name: lz4-c
+  version: 1.9.4
+  category: main
+  manager: conda
+  dependencies:
+  - libcxx >=14.0.6
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/lz4-c-1.9.4-hb7217d7_0.conda
+  hash:
+    md5: 45505bec548634f7d05e02fb25262cb9
+    sha256: fc343b8c82efe40819b986e29ba748366514e5ab94a1e1138df195af5f45fa24
+  build: hb7217d7_0
+  arch: aarch64
+  subdir: osx-arm64
+  build_number: 0
+  license: BSD-2-Clause
+  license_family: BSD
+  size: 141188
+  timestamp: 1674727268278
+- platform: win-64
+  name: lz4-c
+  version: 1.9.4
+  category: main
+  manager: conda
+  dependencies:
+  - ucrt >=10.0.20348.0
+  - vc >=14.2,<15
+  - vs2015_runtime >=14.29.30139
+  url: https://conda.anaconda.org/conda-forge/win-64/lz4-c-1.9.4-hcfcfb64_0.conda
+  hash:
+    md5: e34720eb20a33fc3bfb8451dd837ab7a
+    sha256: a0954b4b1590735ea5f3d0f4579c3883f8ac837387afd5b398b241fda85124ab
+  build: hcfcfb64_0
+  arch: x86_64
+  subdir: win-64
+  build_number: 0
+  license: BSD-2-Clause
+  license_family: BSD
+  size: 134235
+  timestamp: 1674728465431
 - platform: win-64
   name: mkl
   version: 2023.2.0
@@ -9748,8 +9897,8 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libopencv ==4.8.1 py312h55e7661_3
-  - py-opencv ==4.8.1 py312hd42ba9a_3
+  - libopencv 4.8.1 py312h55e7661_3
+  - py-opencv 4.8.1 py312hd42ba9a_3
   - python_abi 3.12.* *_cp312
   url: https://conda.anaconda.org/conda-forge/win-64/opencv-4.8.1-py312h2e8e312_3.conda
   hash:
@@ -9912,7 +10061,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - ca-certificates *
+  - ca-certificates
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
   - vc14_runtime >=14.29.30139
@@ -10447,7 +10596,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libopencv ==4.8.1 py312h55e7661_3
+  - libopencv 4.8.1 py312h55e7661_3
   - numpy >=1.26.0,<2.0a0
   - python >=3.12,<3.13.0a0
   - python_abi 3.12.* *_cp312
@@ -10570,7 +10719,7 @@ package:
   - libzlib >=1.2.13,<1.3.0a0
   - openssl >=3.1.3,<4.0a0
   - tk >=8.6.13,<8.7.0a0
-  - tzdata *
+  - tzdata
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
   - vc14_runtime >=14.29.30139
@@ -11450,7 +11599,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - vswhere *
+  - vswhere
   url: https://conda.anaconda.org/conda-forge/win-64/vs2019_win-64-19.29.30139-he1865b1_17.conda
   hash:
     md5: 6351cac64b43c84c64bb6fe646d6acfe
@@ -12288,7 +12437,7 @@ package:
   category: main
   manager: conda
   dependencies:
-  - libzlib ==1.2.13 hcfcfb64_5
+  - libzlib 1.2.13 hcfcfb64_5
   - ucrt >=10.0.20348.0
   - vc >=14.2,<15
   - vc14_runtime >=14.29.30139

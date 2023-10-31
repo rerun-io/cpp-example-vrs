@@ -46,7 +46,6 @@ ninja = "1.11.1"
 # Required by this example:
 fmt = "10.1.1.*"
 gtest = "1.14.0"
-jpeg = "9e.*"
 libjpeg-turbo = "2.1.4.*"
 libpng = "1.6.39.*"
 lz4 = "4.3.2.*"

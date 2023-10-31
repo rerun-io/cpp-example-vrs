@@ -51,10 +51,7 @@ namespace rerun_vrs {
         if (record.recordType == vrs::Record::Type::CONFIGURATION) {
             // NOTE this is meta data from the sensor that doesn't change over time and only comes
             // in once in the beginning
-            rec_->log_timeless(
-                (entityPath_ + "/configuration").c_str(),
-                rerun::TextDocument(layout_str)
-            );
+            rec_->log_timeless(entityPath_ + "/configuration", rerun::TextDocument(layout_str));
         }
 
         if (record.recordType == vrs::Record::Type::DATA) {
@@ -65,7 +62,7 @@ namespace rerun_vrs {
             }
 
             // this is meta data per record and changes over time
-            rec_->log((entityPath_ + "/data").c_str(), rerun::TextDocument(layout_str));
+            rec_->log(entityPath_ + "/data", rerun::TextDocument(layout_str));
         }
 
         return true;
@@ -84,7 +81,7 @@ namespace rerun_vrs {
             //   Right now we don't check this properly, and just assume that there is no extra padding
             //   per pixel and / or per row.
             rec_->log(
-                add_quotes(id_.getName()).c_str(),
+                add_quotes(id_.getName()),
                 rerun::Image(
                     {frame->getHeight(),
                      frame->getWidth(),

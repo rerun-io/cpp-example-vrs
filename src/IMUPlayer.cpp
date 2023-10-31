@@ -63,10 +63,7 @@ namespace rerun_vrs {
         if (record.recordType == vrs::Record::Type::CONFIGURATION) {
             // NOTE this is meta data from the sensor that doesn't change over time and only comes
             // in once in the beginning
-            rec_->log_timeless(
-                (entityPath_ + "/configuration").c_str(),
-                rerun::TextDocument(layout_str)
-            );
+            rec_->log_timeless(entityPath_ + "/configuration", rerun::TextDocument(layout_str));
 
             // read properties required for logging
             auto& config = getExpectedLayout<IMUConfigurationDataLayout>(layout, blockIndex);
@@ -103,33 +100,24 @@ namespace rerun_vrs {
 
     void IMUPlayer::logAccelerometer(const std::array<float, 3>& accelMSec2) {
         rec_->log(
-            (entityPath_ + "/accelerometer").c_str(),
+            entityPath_ + "/accelerometer",
             rerun::Arrows3D::from_vectors({rerun::datatypes::Vec3D(accelMSec2)})
         );
-        rec_->log(
-            (entityPath_ + "/accelerometer/x").c_str(),
-            rerun::TimeSeriesScalar(accelMSec2[0])
-        );
-        rec_->log(
-            (entityPath_ + "/accelerometer/y").c_str(),
-            rerun::TimeSeriesScalar(accelMSec2[1])
-        );
-        rec_->log(
-            (entityPath_ + "/accelerometer/z").c_str(),
-            rerun::TimeSeriesScalar(accelMSec2[2])
-        );
+        rec_->log(entityPath_ + "/accelerometer/x", rerun::TimeSeriesScalar(accelMSec2[0]));
+        rec_->log(entityPath_ + "/accelerometer/y", rerun::TimeSeriesScalar(accelMSec2[1]));
+        rec_->log(entityPath_ + "/accelerometer/z", rerun::TimeSeriesScalar(accelMSec2[2]));
     }
 
     void IMUPlayer::logGyroscope(const std::array<float, 3>& gyroRadSec) {
-        rec_->log((entityPath_ + "/gyroscope/x").c_str(), rerun::TimeSeriesScalar(gyroRadSec[0]));
-        rec_->log((entityPath_ + "/gyroscope/y").c_str(), rerun::TimeSeriesScalar(gyroRadSec[1]));
-        rec_->log((entityPath_ + "/gyroscope/z").c_str(), rerun::TimeSeriesScalar(gyroRadSec[2]));
+        rec_->log(entityPath_ + "/gyroscope/x", rerun::TimeSeriesScalar(gyroRadSec[0]));
+        rec_->log(entityPath_ + "/gyroscope/y", rerun::TimeSeriesScalar(gyroRadSec[1]));
+        rec_->log(entityPath_ + "/gyroscope/z", rerun::TimeSeriesScalar(gyroRadSec[2]));
     }
 
     void IMUPlayer::logMagnetometer(const std::array<float, 3>& magTesla) {
-        rec_->log((entityPath_ + "/magnetometer/x").c_str(), rerun::TimeSeriesScalar(magTesla[0]));
-        rec_->log((entityPath_ + "/magnetometer/y").c_str(), rerun::TimeSeriesScalar(magTesla[1]));
-        rec_->log((entityPath_ + "/magnetometer/z").c_str(), rerun::TimeSeriesScalar(magTesla[2]));
+        rec_->log(entityPath_ + "/magnetometer/x", rerun::TimeSeriesScalar(magTesla[0]));
+        rec_->log(entityPath_ + "/magnetometer/y", rerun::TimeSeriesScalar(magTesla[1]));
+        rec_->log(entityPath_ + "/magnetometer/z", rerun::TimeSeriesScalar(magTesla[2]));
     }
 
     bool mightContainIMUData(const vrs::StreamId& id) {

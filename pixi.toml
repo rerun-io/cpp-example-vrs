@@ -10,7 +10,7 @@
 # and `pixi run TASK` to run it (e.g. `pixi run example`).
 
 [project]
-name = "rerun_cpp_example_opencv_eigen"
+name = "rerun_cpp_example_vrs"
 authors = ["rerun.io <opensource@rerun.io>"]
 channels = ["conda-forge"]
 description = "Use the Rerun C++ SDK together with VRS"

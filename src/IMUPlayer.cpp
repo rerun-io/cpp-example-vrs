@@ -50,8 +50,9 @@ namespace rerun_vrs {
     bool IMUPlayer::onDataLayoutRead(
         const vrs::CurrentRecord& record, size_t blockIndex, vrs::DataLayout& layout
     ) {
-        if (!enabled_)
+        if (!enabled_) {
             return false;
+        }
 
         std::ostringstream buffer;
         layout.printLayoutCompact(buffer);
@@ -79,18 +80,21 @@ namespace rerun_vrs {
 
             if (hasAccelerometer_) {
                 std::array<float, 3> accelMSec2;
-                if (data.accelMSec2.get(accelMSec2.data(), accelMSec2.size()))
+                if (data.accelMSec2.get(accelMSec2.data(), accelMSec2.size())) {
                     logAccelerometer(accelMSec2);
+                }
             }
             if (hasGyroscope_) {
                 std::array<float, 3> gyroRadSec;
-                if (data.gyroRadSec.get(gyroRadSec.data(), gyroRadSec.size()))
+                if (data.gyroRadSec.get(gyroRadSec.data(), gyroRadSec.size())) {
                     logGyroscope(gyroRadSec);
+                }
             }
             if (hasMagnetometer_) {
                 std::array<float, 3> magTesla;
-                if (data.magTesla.get(magTesla.data(), magTesla.size()))
+                if (data.magTesla.get(magTesla.data(), magTesla.size())) {
                     logMagnetometer(magTesla);
+                }
             }
         }
 

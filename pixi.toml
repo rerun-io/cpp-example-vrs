@@ -34,14 +34,16 @@ build = { cmd = "cmake --build build --config RelWithDebInfo --target all", depe
     "prepare",
 ] }
 example = { cmd = "build/rerun_vrs_example", depends_on = ["build"] }
+format = { cmd = "clang-format -i src/*" }
 
 [dependencies]
 # Build tools:
 boost = "1.82.0.*"
 cmake = "3.27.6"
+clang-tools = ">=15,<16" # clang-format
 cxx-compiler = "1.6.0.*"
 ninja = "1.11.1"
-# Required by this example:~
+# Required by this example:
 fmt = "10.1.1.*"
 gtest = "1.14.0"
 lz4 = "4.3.2.*"

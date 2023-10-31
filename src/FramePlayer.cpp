@@ -38,8 +38,9 @@ namespace rerun_vrs {
     bool FramePlayer::onDataLayoutRead(
         const vrs::CurrentRecord& record, size_t blockIndex, vrs::DataLayout& layout
     ) {
-        if (!enabled_)
+        if (!enabled_) {
             return false;
+        }
 
         std::ostringstream buffer;
         layout.printLayoutCompact(buffer);
@@ -59,8 +60,9 @@ namespace rerun_vrs {
         if (record.recordType == vrs::Record::Type::DATA) {
             auto& config = getExpectedLayout<FrameNumberDataLayout>(layout, blockIndex);
             uint64_t frame_number;
-            if (config.frameNumber.get(frame_number))
+            if (config.frameNumber.get(frame_number)) {
                 rec_->set_time_sequence("frame_number", frame_number);
+            }
 
             // this is meta data per record and changes over time
             rec_->log((entityPath_ + "/data").c_str(), rerun::TextDocument(layout_str));

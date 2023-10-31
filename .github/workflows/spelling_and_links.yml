@@ -32,7 +32,7 @@ jobs:
       - uses: jprochazk/linkinator-action@main
         with:
           linksToSkip: "https://crates.io/crates/.*, http://localhost:.*" # Avoid crates.io rate-limiting
-          paths: "**/*.cpp, **/*.hpp, **/*.md, **/*.toml, **/*.yml"
+          paths: "**/*.cpp, **/*.h, **/*.md, **/*.toml, **/*.yml"
           retry: true
           retryErrors: true
           retryErrorsCount: 5

@@ -3,3 +3,6 @@ build
 
 # Pixi environment
 .pixi
+
+# Convencience
+sample_dataset

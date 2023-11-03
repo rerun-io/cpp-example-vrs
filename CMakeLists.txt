@@ -8,14 +8,15 @@ if(NOT DEFINED CMAKE_CXX_STANDARD)
     set(CMAKE_CXX_STANDARD 17)
 endif()
 
+# Rerun:
 include(FetchContent)
 FetchContent_Declare(rerun_sdk URL https://github.com/rerun-io/rerun/releases/download/0.10.1/rerun_cpp_sdk.zip)
 FetchContent_MakeAvailable(rerun_sdk)
 
-# Don't build the VRS tools
-set(BUILD_TOOLS OFF)
-
+# VRS:
 include(FetchContent)
+set(BUILD_TOOLS OFF) # VRS tools
+set(BUILD_SAMPLES OFF) # VRS sample code and sample apps
 FetchContent_Declare(vrslib URL https://github.com/facebookresearch/vrs/archive/refs/tags/v1.1.0.zip)
 FetchContent_MakeAvailable(vrslib)
 

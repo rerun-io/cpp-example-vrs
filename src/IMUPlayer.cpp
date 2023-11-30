@@ -101,7 +101,7 @@ namespace rerun_vrs {
     void IMUPlayer::logAccelerometer(const std::array<float, 3>& accelMSec2) {
         rec_->log(
             entityPath_ + "/accelerometer",
-            rerun::Arrows3D::from_vectors({rerun::datatypes::Vec3D(accelMSec2)})
+            rerun::Arrows3D::from_vectors({accelMSec2})
         );
         rec_->log(entityPath_ + "/accelerometer/x", rerun::TimeSeriesScalar(accelMSec2[0]));
         rec_->log(entityPath_ + "/accelerometer/y", rerun::TimeSeriesScalar(accelMSec2[1]));

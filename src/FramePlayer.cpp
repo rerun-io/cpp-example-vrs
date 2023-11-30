@@ -81,12 +81,12 @@ namespace rerun_vrs {
             //   Right now we don't check this properly, and just assume that there is no extra padding
             //   per pixel and / or per row.
             rec_->log(
-                add_quotes(id_.getName()),
+                entityPath_,
                 rerun::Image(
                     {frame->getHeight(),
                      frame->getWidth(),
                      frame->getSpec().getChannelCountPerPixel()},
-                    std::move(frame->getBuffer())
+                    frame->getBuffer()
                 )
             );
         } else {

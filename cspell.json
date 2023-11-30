@@ -4,5 +4,6 @@
     "usePnP": true,
     "ignoreWords": [
         "pixi",
+        "srcset",
     ]
 }

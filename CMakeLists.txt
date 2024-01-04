@@ -17,6 +17,7 @@ FetchContent_MakeAvailable(rerun_sdk)
 include(FetchContent)
 set(BUILD_TOOLS OFF) # VRS tools
 set(BUILD_SAMPLES OFF) # VRS sample code and sample apps
+set(UNIT_TESTS OFF) # VRS unit tests
 FetchContent_Declare(vrslib URL https://github.com/facebookresearch/vrs/archive/refs/tags/v1.1.0.zip)
 FetchContent_MakeAvailable(vrslib)
 

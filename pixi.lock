@@ -1,3 +1,4 @@
+version: 2
 metadata:
   content_hash:
     linux-64: e90c2ee71ad70fc0a1c8302029533a7d1498f2bffcd0eaa8d2934700e775dc1d
@@ -135,64 +136,64 @@ package:
   timestamp: 1694604071236
 - platform: linux-64
   name: boost
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
-  - libboost-python-devel 1.82.0 py312h8da182e_6
-  - numpy >=1.26.0,<2.0a0
+  - libboost-python-devel 1.84.0 py312h8da182e_0
+  - numpy >=1.26.2,<2.0a0
   - python_abi 3.12.* *_cp312
-  url: https://conda.anaconda.org/conda-forge/linux-64/boost-1.82.0-h8da182e_6.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/boost-1.84.0-h8da182e_0.conda
   hash:
-    md5: 6bac169a90ce8599248e9a1e848ec639
-    sha256: dd5fef2117c236dfce5ff09a6923efbb07ef795ea0bc039338aaba8c36155d7e
-  build: h8da182e_6
+    md5: 383678053e1b7f81c4a8062e95460fef
+    sha256: 5be49529bfcc041f2faf06d457867513b6bb6f8b431d8c4c2efd7e12f53456b2
+  build: h8da182e_0
   arch: x86_64
   subdir: linux-64
-  build_number: 6
+  build_number: 0
   license: BSL-1.0
-  size: 13644
-  timestamp: 1696732823675
+  size: 13274
+  timestamp: 1702936970487
 - platform: osx-64
   name: boost
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
-  - libboost-python-devel 1.82.0 py312hdce95a9_6
-  - numpy >=1.26.0,<2.0a0
+  - libboost-python-devel 1.84.0 py312hdce95a9_0
+  - numpy >=1.26.2,<2.0a0
   - python_abi 3.12.* *_cp312
-  url: https://conda.anaconda.org/conda-forge/osx-64/boost-1.82.0-hdce95a9_6.conda
+  url: https://conda.anaconda.org/conda-forge/osx-64/boost-1.84.0-hdce95a9_0.conda
   hash:
-    md5: 3cca751d789cdfccae5a153a201ab65b
-    sha256: 36c5a43e036bcb4ceac2a27e276b9da8a823a05db2e41f00e68cc237495a9aa7
-  build: hdce95a9_6
+    md5: 759658d917f3b2d25b3297c4b399f0d6
+    sha256: b77facc9c0e8cd87f27e9f24b1c3d2e1a06336e2f377136ba044a8c01e33bb0b
+  build: hdce95a9_0
   arch: x86_64
   subdir: osx-64
-  build_number: 6
+  build_number: 0
   license: BSL-1.0
-  size: 13913
-  timestamp: 1696734850797
+  size: 13547
+  timestamp: 1702939277924
 - platform: osx-arm64
   name: boost
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
-  - libboost-python-devel 1.82.0 py312h37858a2_6
-  - numpy >=1.26.0,<2.0a0
+  - libboost-python-devel 1.84.0 py312h37858a2_0
+  - numpy >=1.26.2,<2.0a0
   - python_abi 3.12.* *_cp312
-  url: https://conda.anaconda.org/conda-forge/osx-arm64/boost-1.82.0-h37858a2_6.conda
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/boost-1.84.0-h37858a2_0.conda
   hash:
-    md5: 4edf4560686e3a21fa86eb238d517f82
-    sha256: cba3ae15cbbe5f95f993fa885aa2ee5488aab66fd49d7a2785f2c9637854e4db
-  build: h37858a2_6
+    md5: 86db31abd50fd159a655944e444bafa9
+    sha256: 61f41de3790f3faa932d2796385d3155ac6cd5205c809f6be3c691aeadbdf0d4
+  build: h37858a2_0
   arch: aarch64
   subdir: osx-arm64
-  build_number: 6
+  build_number: 0
   license: BSL-1.0
-  size: 14012
-  timestamp: 1696734840603
+  size: 13557
+  timestamp: 1702938914597
 - platform: linux-64
   name: bzip2
   version: 1.0.8
@@ -1882,7 +1883,7 @@ package:
   timestamp: 1697484577887
 - platform: linux-64
   name: libboost
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
@@ -1893,338 +1894,338 @@ package:
   - libzlib >=1.2.13,<1.3.0a0
   - xz >=5.2.6,<6.0a0
   - zstd >=1.5.5,<1.6.0a0
-  url: https://conda.anaconda.org/conda-forge/linux-64/libboost-1.82.0-h6fcfa73_6.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/libboost-1.84.0-h6fcfa73_0.conda
   hash:
-    md5: 05c40141d4184953616797d5c3d7947f
-    sha256: c820f1ca7a2844fc5589bb101cc33188e06205ccb022051e13a6398def22e8bf
-  build: h6fcfa73_6
+    md5: 707558dfcee0f277bb3428b97646c868
+    sha256: e5eeb98b824cb3a680e09f1e2c4d9274493361da37fd561bf51071ca917253fa
+  build: h6fcfa73_0
   arch: x86_64
   subdir: linux-64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost-cpp =1.82.0
+  - boost-cpp =1.84.0
   license: BSL-1.0
-  size: 2616318
-  timestamp: 1696732023030
+  size: 2730856
+  timestamp: 1702936149169
 - platform: osx-64
   name: libboost
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
   - bzip2 >=1.0.8,<2.0a0
   - icu >=73.2,<74.0a0
-  - libcxx >=15.0.7
+  - libcxx >=15
   - libzlib >=1.2.13,<1.3.0a0
   - xz >=5.2.6,<6.0a0
   - zstd >=1.5.5,<1.6.0a0
-  url: https://conda.anaconda.org/conda-forge/osx-64/libboost-1.82.0-hf0c313a_6.conda
+  url: https://conda.anaconda.org/conda-forge/osx-64/libboost-1.84.0-h5b2dd29_0.conda
   hash:
-    md5: 2b05a03da82719158b7db75ca8396848
-    sha256: 2d55a3328d8b64312c827c338d07a6452f1523ea09e54f0781062112872d17db
-  build: hf0c313a_6
+    md5: 032b76970389277f0a30efd502e39c1b
+    sha256: 4731d26d2affc0910cc9d66cd99214a58813f44c16484bbd04040bd7688f8c5c
+  build: h5b2dd29_0
   arch: x86_64
   subdir: osx-64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost-cpp =1.82.0
+  - boost-cpp =1.84.0
   license: BSL-1.0
-  size: 2008423
-  timestamp: 1696732917231
+  size: 2010551
+  timestamp: 1702937241144
 - platform: osx-arm64
   name: libboost
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
   - bzip2 >=1.0.8,<2.0a0
   - icu >=73.2,<74.0a0
-  - libcxx >=15.0.7
+  - libcxx >=15
   - libzlib >=1.2.13,<1.3.0a0
   - xz >=5.2.6,<6.0a0
   - zstd >=1.5.5,<1.6.0a0
-  url: https://conda.anaconda.org/conda-forge/osx-arm64/libboost-1.82.0-h72cdd8a_6.conda
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/libboost-1.84.0-h238a360_0.conda
   hash:
-    md5: d8fc5212f39791c07701e042f372f726
-    sha256: d6e9212fa8c0e9924907c4f5de73184a97e135e79e7fd9bc36549dce32f902e4
-  build: h72cdd8a_6
+    md5: 6682dc7834d5ef797e96fa93f224e77c
+    sha256: 68a884d14ad1121bc673620d89a909b689fab02de52bf1610dd1f27f809ab534
+  build: h238a360_0
   arch: aarch64
   subdir: osx-arm64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost-cpp =1.82.0
+  - boost-cpp =1.84.0
   license: BSL-1.0
-  size: 1986026
-  timestamp: 1696732961645
+  size: 1921160
+  timestamp: 1702937290346
 - platform: linux-64
   name: libboost-devel
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
-  - libboost 1.82.0 h6fcfa73_6
-  - libboost-headers 1.82.0 ha770c72_6
-  url: https://conda.anaconda.org/conda-forge/linux-64/libboost-devel-1.82.0-h00ab1b0_6.conda
+  - libboost 1.84.0 h6fcfa73_0
+  - libboost-headers 1.84.0 ha770c72_0
+  url: https://conda.anaconda.org/conda-forge/linux-64/libboost-devel-1.84.0-h00ab1b0_0.conda
   hash:
-    md5: 66fcac2ce711bea87d3aefd64cd03e9e
-    sha256: 3505d971488558513f1c0a673cb5d9a5f24c19753a06d68d29a355092804b9a2
-  build: h00ab1b0_6
+    md5: 3751ac311c7d047fb2f29c4467966300
+    sha256: 6306612874d43b8bccdb97dc32efbc58d65460e5f04707b4bb2c5d918ada7d4b
+  build: h00ab1b0_0
   arch: x86_64
   subdir: linux-64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost-cpp =1.82.0
+  - boost-cpp =1.84.0
   license: BSL-1.0
-  size: 35668
-  timestamp: 1696732141030
+  size: 35562
+  timestamp: 1702936270470
 - platform: osx-64
   name: libboost-devel
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
-  - libboost 1.82.0 hf0c313a_6
-  - libboost-headers 1.82.0 h694c41f_6
-  url: https://conda.anaconda.org/conda-forge/osx-64/libboost-devel-1.82.0-h1c7c39f_6.conda
+  - libboost 1.84.0 h5b2dd29_0
+  - libboost-headers 1.84.0 h694c41f_0
+  url: https://conda.anaconda.org/conda-forge/osx-64/libboost-devel-1.84.0-h7728843_0.conda
   hash:
-    md5: 8a7c0f8cf64d470f53495836c8f18b37
-    sha256: 12ad2eb2ef2377aa987fb54dd56f3f4d9298be46e47524a310de50ae3be805ff
-  build: h1c7c39f_6
+    md5: 76ac55aa59282911e3e64b17042ef236
+    sha256: 003866bffe5c61c3841ba85933bf1afcaccec90c2880f1a9151433cedcdee8ee
+  build: h7728843_0
   arch: x86_64
   subdir: osx-64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost-cpp =1.82.0
+  - boost-cpp =1.84.0
   license: BSL-1.0
-  size: 36921
-  timestamp: 1696733091418
+  size: 36638
+  timestamp: 1702937433778
 - platform: osx-arm64
   name: libboost-devel
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
-  - libboost 1.82.0 h72cdd8a_6
-  - libboost-headers 1.82.0 hce30654_6
-  url: https://conda.anaconda.org/conda-forge/osx-arm64/libboost-devel-1.82.0-hf450f58_6.conda
+  - libboost 1.84.0 h238a360_0
+  - libboost-headers 1.84.0 hce30654_0
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/libboost-devel-1.84.0-hf450f58_0.conda
   hash:
-    md5: ed27aef4ecef568a9ccc62504c735f35
-    sha256: d259ac9716b8462be96c70b1fa6009fa803223e1b0b266552b6c4c79b62349a5
-  build: hf450f58_6
+    md5: dde2e875586a491ff4c79505220b29a9
+    sha256: 6cabd9be433710a79c217022f373d415c73771b3f1ab047de5ffe37948394051
+  build: hf450f58_0
   arch: aarch64
   subdir: osx-arm64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost-cpp =1.82.0
+  - boost-cpp =1.84.0
   license: BSL-1.0
-  size: 36312
-  timestamp: 1696733163019
+  size: 36217
+  timestamp: 1702937482619
 - platform: linux-64
   name: libboost-headers
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies: []
-  url: https://conda.anaconda.org/conda-forge/linux-64/libboost-headers-1.82.0-ha770c72_6.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/libboost-headers-1.84.0-ha770c72_0.conda
   hash:
-    md5: a943dcb8fd22cf23ce901ac84f6538c2
-    sha256: c996950b85808115ea833e577a0af2969dbb0378c299560c2b945401a7770823
-  build: ha770c72_6
+    md5: 9c595e87653a36aa4d8c71b4e2f7e586
+    sha256: f6a6eb40a33b32eaab5d9ab36567b126f54c0b2112fe53131cf7b55afff2d0d9
+  build: ha770c72_0
   arch: x86_64
   subdir: linux-64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost-cpp =1.82.0
+  - boost-cpp =1.84.0
   license: BSL-1.0
-  size: 13700720
-  timestamp: 1696732043024
+  size: 13694667
+  timestamp: 1702936171166
 - platform: osx-64
   name: libboost-headers
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies: []
-  url: https://conda.anaconda.org/conda-forge/osx-64/libboost-headers-1.82.0-h694c41f_6.conda
+  url: https://conda.anaconda.org/conda-forge/osx-64/libboost-headers-1.84.0-h694c41f_0.conda
   hash:
-    md5: 26a7214f82c75126cbd6d6a8e6792b31
-    sha256: 84dae029e113178efa697fbbe6ff7aa270974f316fbf208a24242d35295e96a6
-  build: h694c41f_6
+    md5: 03abd21044ed2d280c1a6d2ea98a9e58
+    sha256: 126fab93763782f3cced72fbcbad9577acaa86a005739a026cfa19bc2abe159f
+  build: h694c41f_0
   arch: x86_64
   subdir: osx-64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost-cpp =1.82.0
+  - boost-cpp =1.84.0
   license: BSL-1.0
-  size: 13795494
-  timestamp: 1696732955800
+  size: 13834633
+  timestamp: 1702937283843
 - platform: osx-arm64
   name: libboost-headers
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies: []
-  url: https://conda.anaconda.org/conda-forge/osx-arm64/libboost-headers-1.82.0-hce30654_6.conda
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/libboost-headers-1.84.0-hce30654_0.conda
   hash:
-    md5: ae7c68cf82c23fe6c68f0efa064ef41a
-    sha256: 19cc7fff73fda78f142a875f06f2467fcbfc5c8c3e0db92b212e425de309a27d
-  build: hce30654_6
+    md5: 284cebe4165a186462c4471c11f5ee96
+    sha256: ca1bcaac05608ed420650c1cb329bbab7bb0a059dce7f7803a592fcc414d4604
+  build: hce30654_0
   arch: aarch64
   subdir: osx-arm64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost-cpp =1.82.0
+  - boost-cpp =1.84.0
   license: BSL-1.0
-  size: 13795546
-  timestamp: 1696733002284
+  size: 13835271
+  timestamp: 1702937328142
 - platform: linux-64
   name: libboost-python
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
   - libgcc-ng >=12
   - libstdcxx-ng >=12
-  - numpy >=1.26.0,<2.0a0
+  - numpy >=1.26.2,<2.0a0
   - python >=3.12,<3.13.0a0
   - python_abi 3.12.* *_cp312
-  url: https://conda.anaconda.org/conda-forge/linux-64/libboost-python-1.82.0-py312hfb10629_6.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/libboost-python-1.84.0-py312hfb10629_0.conda
   hash:
-    md5: 4372af692dcfcf430676eeca7b444632
-    sha256: bbaf0d413990a4f39c2bc948ec231d98f81afc685db11cdf37e8fc0a45bcaecb
-  build: py312hfb10629_6
+    md5: 31e444a4b345a6aa20e3411edac62928
+    sha256: f512e9818b664b500659794df5e3406ea1250c966b3b9b6e5d2f4c21c6db2e66
+  build: py312hfb10629_0
   arch: x86_64
   subdir: linux-64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost =1.82.0
+  - boost =1.84.0
   - py-boost <0.0a0
   license: BSL-1.0
-  size: 121120
-  timestamp: 1696732549289
+  size: 121151
+  timestamp: 1702936375767
 - platform: osx-64
   name: libboost-python
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
-  - libcxx >=15.0.7
-  - numpy >=1.26.0,<2.0a0
+  - libcxx >=15
+  - numpy >=1.26.2,<2.0a0
   - python >=3.12,<3.13.0a0
   - python_abi 3.12.* *_cp312
-  url: https://conda.anaconda.org/conda-forge/osx-64/libboost-python-1.82.0-py312hb54c7b1_6.conda
+  url: https://conda.anaconda.org/conda-forge/osx-64/libboost-python-1.84.0-py312h3db3e91_0.conda
   hash:
-    md5: 40dd0b76bcbcc8438d85655e90e54f4c
-    sha256: 8f25fc21b2480aeb0f78ca7f2e46fbf123f3d041ff4b16af9cd0c91ced2602b0
-  build: py312hb54c7b1_6
+    md5: c9812a2a77ea00cd0d2c8e6c4d47b7d8
+    sha256: bd49fabcbdd5257b702703fc761691034ecd4ccd77559bede4cb6fc537debb1e
+  build: py312h3db3e91_0
   arch: x86_64
   subdir: osx-64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost =1.82.0
   - py-boost <0.0a0
+  - boost =1.84.0
   license: BSL-1.0
-  size: 106341
-  timestamp: 1696733749191
+  size: 105163
+  timestamp: 1702938216423
 - platform: osx-arm64
   name: libboost-python
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
-  - libcxx >=15.0.7
-  - numpy >=1.26.0,<2.0a0
+  - libcxx >=15
+  - numpy >=1.26.2,<2.0a0
   - python >=3.12,<3.13.0a0
   - python >=3.12,<3.13.0a0 *_cpython
   - python_abi 3.12.* *_cp312
-  url: https://conda.anaconda.org/conda-forge/osx-arm64/libboost-python-1.82.0-py312h260253b_6.conda
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/libboost-python-1.84.0-py312hab5418a_0.conda
   hash:
-    md5: dd454b68158c436b11aa8c4daf350f37
-    sha256: b60bb8df1fcc6ddd758c5645a891c079862216bfb8d907e1bfdcf9e366d2fda1
-  build: py312h260253b_6
+    md5: 9d68043c39854cdc0fce7e292ec6f314
+    sha256: 4ced215790154561ae44f85e766b989e6022488628b1ce3120c2c87924aff9ac
+  build: py312hab5418a_0
   arch: aarch64
   subdir: osx-arm64
-  build_number: 6
+  build_number: 0
   constrains:
+  - boost =1.84.0
   - py-boost <0.0a0
-  - boost =1.82.0
   license: BSL-1.0
-  size: 113245
-  timestamp: 1696734092718
+  size: 104411
+  timestamp: 1702937703118
 - platform: linux-64
   name: libboost-python-devel
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
-  - libboost-devel 1.82.0 h00ab1b0_6
-  - libboost-python 1.82.0 py312hfb10629_6
-  - numpy >=1.26.0,<2.0a0
+  - libboost-devel 1.84.0 h00ab1b0_0
+  - libboost-python 1.84.0 py312hfb10629_0
+  - numpy >=1.26.2,<2.0a0
   - python >=3.12,<3.13.0a0
   - python_abi 3.12.* *_cp312
-  url: https://conda.anaconda.org/conda-forge/linux-64/libboost-python-devel-1.82.0-py312h8da182e_6.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/libboost-python-devel-1.84.0-py312h8da182e_0.conda
   hash:
-    md5: 7ff8a68cdc46f6396fef806de436db16
-    sha256: 17a87a8fabb9124a3ced8936ab3fbfa11d1d34c0e16df6f60fb900f86a1d4ef5
-  build: py312h8da182e_6
+    md5: afd8a30e2227cf1e68015bafc84c435a
+    sha256: 9796a2543af85d67bb316de201a16254677d7e4b1441d887b37aca10bf8193f2
+  build: py312h8da182e_0
   arch: x86_64
   subdir: linux-64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost =1.82.0
+  - boost =1.84.0
   - py-boost <0.0a0
   license: BSL-1.0
-  size: 17121
-  timestamp: 1696732723376
+  size: 16745
+  timestamp: 1702936836937
 - platform: osx-64
   name: libboost-python-devel
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
-  - libboost-devel 1.82.0 h1c7c39f_6
-  - libboost-python 1.82.0 py312hb54c7b1_6
-  - numpy >=1.26.0,<2.0a0
+  - libboost-devel 1.84.0 h7728843_0
+  - libboost-python 1.84.0 py312h3db3e91_0
+  - numpy >=1.26.2,<2.0a0
   - python >=3.12,<3.13.0a0
   - python_abi 3.12.* *_cp312
-  url: https://conda.anaconda.org/conda-forge/osx-64/libboost-python-devel-1.82.0-py312hdce95a9_6.conda
+  url: https://conda.anaconda.org/conda-forge/osx-64/libboost-python-devel-1.84.0-py312hdce95a9_0.conda
   hash:
-    md5: 5fba5ab31559822367c2ce67b6984452
-    sha256: 2db2a228297a684d4f609a78b6bd162ff071da20524679eb74a9284d6cba6f74
-  build: py312hdce95a9_6
+    md5: db735556c76695e6c331a6815402d6eb
+    sha256: 30b002837c11464d5f7e40ee6ba8b47baf8cb0ef4f1216a8878c66fba0f63adc
+  build: py312hdce95a9_0
   arch: x86_64
   subdir: osx-64
-  build_number: 6
+  build_number: 0
   constrains:
-  - boost =1.82.0
   - py-boost <0.0a0
+  - boost =1.84.0
   license: BSL-1.0
-  size: 17347
-  timestamp: 1696734518653
+  size: 16975
+  timestamp: 1702938928495
 - platform: osx-arm64
   name: libboost-python-devel
-  version: 1.82.0
+  version: 1.84.0
   category: main
   manager: conda
   dependencies:
-  - libboost-devel 1.82.0 hf450f58_6
-  - libboost-python 1.82.0 py312h260253b_6
-  - numpy >=1.26.0,<2.0a0
+  - libboost-devel 1.84.0 hf450f58_0
+  - libboost-python 1.84.0 py312hab5418a_0
+  - numpy >=1.26.2,<2.0a0
   - python >=3.12,<3.13.0a0
   - python_abi 3.12.* *_cp312
-  url: https://conda.anaconda.org/conda-forge/osx-arm64/libboost-python-devel-1.82.0-py312h37858a2_6.conda
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/libboost-python-devel-1.84.0-py312h37858a2_0.conda
   hash:
-    md5: c333b67be4801d11e6964df1e1be3614
-    sha256: 071c8c4066f0ff93f53ff12e9fcbf23c2ba196660f88ce8641e18713c1a82c3e
-  build: py312h37858a2_6
+    md5: 6695bebbbcc9e335c4dc669c3ce7f018
+    sha256: fcd0212e72861fb5337caaf162327027cfd3f9b03067ccf0646de84d52d426b1
+  build: py312h37858a2_0
   arch: aarch64
   subdir: osx-arm64
-  build_number: 6
+  build_number: 0
   constrains:
+  - boost =1.84.0
   - py-boost <0.0a0
-  - boost =1.82.0
   license: BSL-1.0
-  size: 17403
-  timestamp: 1696734559316
+  size: 16972
+  timestamp: 1702938590263
 - platform: linux-64
   name: libcblas
   version: 3.9.0
@@ -4163,7 +4164,7 @@ package:
   timestamp: 1676837935565
 - platform: linux-64
   name: numpy
-  version: 1.26.0
+  version: 1.26.4
   category: main
   manager: conda
   dependencies:
@@ -4172,12 +4173,12 @@ package:
   - libgcc-ng >=12
   - liblapack >=3.9.0,<4.0a0
   - libstdcxx-ng >=12
-  - python >=3.12.0rc3,<3.13.0a0
+  - python >=3.12,<3.13.0a0
   - python_abi 3.12.* *_cp312
-  url: https://conda.anaconda.org/conda-forge/linux-64/numpy-1.26.0-py312heda63a1_0.conda
+  url: https://conda.anaconda.org/conda-forge/linux-64/numpy-1.26.4-py312heda63a1_0.conda
   hash:
-    md5: 9b4f35e4d83e2a8b17868b65beb438d9
-    sha256: 83c8770959c096639973dd91dae7001adf8ec4cea374c125388c22314e92cf3a
+    md5: d8285bea2a350f63fab23bf460221f3f
+    sha256: fe3459c75cf84dcef6ef14efcc4adb0ade66038ddd27cadb894f34f4797687d8
   build: py312heda63a1_0
   arch: x86_64
   subdir: linux-64
@@ -4186,25 +4187,25 @@ package:
   - numpy-base <0a0
   license: BSD-3-Clause
   license_family: BSD
-  size: 7452952
-  timestamp: 1695291296202
+  size: 7484186
+  timestamp: 1707225809722
 - platform: osx-64
   name: numpy
-  version: 1.26.0
+  version: 1.26.4
   category: main
   manager: conda
   dependencies:
   - libblas >=3.9.0,<4.0a0
   - libcblas >=3.9.0,<4.0a0
-  - libcxx >=15.0.7
+  - libcxx >=16
   - liblapack >=3.9.0,<4.0a0
-  - python >=3.12.0rc3,<3.13.0a0
+  - python >=3.12,<3.13.0a0
   - python_abi 3.12.* *_cp312
-  url: https://conda.anaconda.org/conda-forge/osx-64/numpy-1.26.0-py312h5df92dc_0.conda
+  url: https://conda.anaconda.org/conda-forge/osx-64/numpy-1.26.4-py312he3a82b2_0.conda
   hash:
-    md5: aec65f472e6633e23844b555bf640a3f
-    sha256: 537ad31f441b60e6f7f8776a5b6b6a2158b051a6d423b84b6aa3bf75bed35d33
-  build: py312h5df92dc_0
+    md5: 96c61a21c4276613748dba069554846b
+    sha256: 6152b73fba3e227afa4952df8753128fc9669bbaf142ee8f9972bf9df3bf8856
+  build: py312he3a82b2_0
   arch: x86_64
   subdir: osx-64
   build_number: 0
@@ -4212,26 +4213,26 @@ package:
   - numpy-base <0a0
   license: BSD-3-Clause
   license_family: BSD
-  size: 7010122
-  timestamp: 1695291869411
+  size: 6990646
+  timestamp: 1707226178262
 - platform: osx-arm64
   name: numpy
-  version: 1.26.0
+  version: 1.26.4
   category: main
   manager: conda
   dependencies:
   - libblas >=3.9.0,<4.0a0
   - libcblas >=3.9.0,<4.0a0
-  - libcxx >=15.0.7
+  - libcxx >=16
   - liblapack >=3.9.0,<4.0a0
-  - python >=3.12.0rc3,<3.13.0a0
-  - python >=3.12.0rc3,<3.13.0a0 *_cpython
+  - python >=3.12,<3.13.0a0
+  - python >=3.12,<3.13.0a0 *_cpython
   - python_abi 3.12.* *_cp312
-  url: https://conda.anaconda.org/conda-forge/osx-arm64/numpy-1.26.0-py312h696b312_0.conda
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/numpy-1.26.4-py312h8442bc7_0.conda
   hash:
-    md5: 6281cf23af141e1bc06f6c705e4cc281
-    sha256: 3cdffc4a7775a0159f4e259814dfc86e80590ddd13114468e1abe5b0bcada96a
-  build: py312h696b312_0
+    md5: d83fc83d589e2625a3451c9a7e21047c
+    sha256: c8841d6d6f61fd70ca80682efbab6bdb8606dc77c68d8acabfbd7c222054f518
+  build: py312h8442bc7_0
   arch: aarch64
   subdir: osx-arm64
   build_number: 0
@@ -4239,8 +4240,8 @@ package:
   - numpy-base <0a0
   license: BSD-3-Clause
   license_family: BSD
-  size: 6149084
-  timestamp: 1695291913048
+  size: 6073136
+  timestamp: 1707226249608
 - platform: linux-64
   name: openssl
   version: 3.1.4
@@ -5063,4 +5064,3 @@ package:
   license_family: BSD
   size: 400508
   timestamp: 1693151393180
-version: 1

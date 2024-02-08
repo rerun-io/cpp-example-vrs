@@ -30,16 +30,16 @@ namespace rerun_vrs {
       public:
         explicit FramePlayer(vrs::StreamId id, std::shared_ptr<const rerun::RecordingStream> rec);
 
-        bool onDataLayoutRead(const vrs::CurrentRecord& r, size_t blockIndex, vrs::DataLayout&)
+        bool onDataLayoutRead(const vrs::CurrentRecord& r, size_t block_index, vrs::DataLayout&)
             override;
-        bool onImageRead(const vrs::CurrentRecord& r, size_t blockIndex, const vrs::ContentBlock&)
+        bool onImageRead(const vrs::CurrentRecord& r, size_t block_index, const vrs::ContentBlock&)
             override;
 
       private:
-        std::shared_ptr<const rerun::RecordingStream> rec_;
-        vrs::StreamId id_;
-        std::string entityPath_;
-        bool enabled_{true};
+        std::shared_ptr<const rerun::RecordingStream> _rec;
+        vrs::StreamId _id;
+        std::string _entity_path;
+        bool _enabled{true};
     };
 
 } // namespace rerun_vrs

@@ -38,7 +38,7 @@ format = { cmd = "clang-format -i src/*" }
 
 [dependencies]
 # Build tools:
-boost = "1.82.0.*"
+boost = "1.84.0.*"
 cmake = "3.27.6"
 clang-tools = ">=15,<16" # clang-format
 cxx-compiler = "1.6.0.*"

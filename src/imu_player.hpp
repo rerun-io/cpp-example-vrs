@@ -34,19 +34,19 @@ namespace rerun_vrs {
             override;
 
       private:
-        void logAccelerometer(const std::array<float, 3>& accelMSec2);
-        void logGyroscope(const std::array<float, 3>& gyroRadSec);
-        void logMagnetometer(const std::array<float, 3>& magTesla);
+        void log_accelerometer(const std::array<float, 3>& accelMSec2);
+        void log_gyroscope(const std::array<float, 3>& gyroRadSec);
+        void log_magnetometer(const std::array<float, 3>& magTesla);
 
-        std::shared_ptr<const rerun::RecordingStream> rec_;
-        vrs::StreamId id_;
-        std::string entityPath_;
-        bool enabled_{true};
-        bool hasAccelerometer_;
-        bool hasGyroscope_;
-        bool hasMagnetometer_;
+        std::shared_ptr<const rerun::RecordingStream> _rec;
+        vrs::StreamId _id;
+        std::string _entity_path;
+        bool _enabled{true};
+        bool _has_accelerometer;
+        bool _has_gyroscope;
+        bool _has_magnetometer;
     };
 
-    bool mightContainIMUData(const vrs::StreamId& id);
+    bool might_contain_imu_data(const vrs::StreamId& id);
 
 } // namespace rerun_vrs

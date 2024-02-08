@@ -7,8 +7,8 @@
 #include <vrs/StreamPlayer.h>
 #include <rerun.hpp>
 
-#include "FramePlayer.h"
-#include "IMUPlayer.h"
+#include "frame_player.hpp"
+#include "imu_player.hpp"
 
 int main(int argc, const char* argv[]) {
     std::cout << "Rerun SDK Version:" << rerun::version_string() << std::endl;
@@ -21,13 +21,13 @@ int main(int argc, const char* argv[]) {
         return 0;
     }
 
-    std::string vrsPath(argv[1]);
+    std::string vrs_path(argv[1]);
 
     vrs::RecordFileReader reader;
-    if (reader.openFile(vrsPath) == 0) {
+    if (reader.openFile(vrs_path) == 0) {
         // for each type of stream there is one player that logs the read data to
         // Rerun
-        std::vector<std::unique_ptr<vrs::StreamPlayer>> streamPlayers;
+        std::vector<std::unique_ptr<vrs::StreamPlayer>> stream_players;
 
         const std::set<vrs::StreamId>& streamIds = reader.getStreams();
         for (auto id : streamIds) {
@@ -35,12 +35,12 @@ int main(int argc, const char* argv[]) {
                       << ": ";
             if (reader.mightContainImages(id)) {
                 std::cout << "Handled by FramePlayer" << std::endl;
-                streamPlayers.emplace_back(std::make_unique<rerun_vrs::FramePlayer>(id, rec));
-                reader.setStreamPlayer(id, streamPlayers.back().get());
-            } else if (rerun_vrs::mightContainIMUData(id)) {
+                stream_players.emplace_back(std::make_unique<rerun_vrs::FramePlayer>(id, rec));
+                reader.setStreamPlayer(id, stream_players.back().get());
+            } else if (rerun_vrs::might_contain_imu_data(id)) {
                 std::cout << "Handled by IMUPlayer" << std::endl;
-                streamPlayers.emplace_back(std::make_unique<rerun_vrs::IMUPlayer>(id, rec));
-                reader.setStreamPlayer(id, streamPlayers.back().get());
+                stream_players.emplace_back(std::make_unique<rerun_vrs::IMUPlayer>(id, rec));
+                reader.setStreamPlayer(id, stream_players.back().get());
             } else {
                 std::cout << "No player available. Skipped." << std::endl;
             }

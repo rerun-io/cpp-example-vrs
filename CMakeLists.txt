@@ -22,6 +22,6 @@ FetchContent_MakeAvailable(vrslib)
 
 find_package(fmt REQUIRED)
 
-add_executable(rerun_vrs_example src/main.cpp src/FramePlayer.cpp src/IMUPlayer.cpp)
+add_executable(rerun_vrs_example src/main.cpp src/frame_player.cpp src/imu_player.cpp)
 target_link_libraries(rerun_vrs_example rerun_sdk vrslib vrs_utils fmt)
 target_include_directories(rerun_vrs_example PRIVATE src)

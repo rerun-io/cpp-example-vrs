@@ -23,14 +23,14 @@
 #include <vrs/DataLayout.h>
 #include <vrs/utils/PixelFrame.h>
 
-#include "IMUPlayer.h"
+#include "imu_player.hpp"
 
 namespace rerun_vrs {
 
     struct IMUConfigurationDataLayout : public vrs::AutoDataLayout {
-        vrs::DataPieceValue<vrs::Bool> hasAccelerometer_{"has_accelerometer"};
-        vrs::DataPieceValue<vrs::Bool> hasGyroscope_{"has_gyroscope"};
-        vrs::DataPieceValue<vrs::Bool> hasMagnetometer_{"has_magnetometer"};
+        vrs::DataPieceValue<vrs::Bool> _has_accelerometer{"has_accelerometer"};
+        vrs::DataPieceValue<vrs::Bool> _has_gyroscope{"has_gyroscope"};
+        vrs::DataPieceValue<vrs::Bool> _has_magnetometer{"has_magnetometer"};
 
         vrs::AutoDataLayoutEnd endLayout;
     };
@@ -44,12 +44,12 @@ namespace rerun_vrs {
     };
 
     IMUPlayer::IMUPlayer(vrs::StreamId id, std::shared_ptr<const rerun::RecordingStream> rec)
-        : id_{id}, rec_{rec}, entityPath_{rerun::new_entity_path({id.getName()})} {}
+        : _id{id}, _rec{rec}, _entity_path{rerun::new_entity_path({id.getName()})} {}
 
     bool IMUPlayer::onDataLayoutRead(
         const vrs::CurrentRecord& record, size_t blockIndex, vrs::DataLayout& layout
     ) {
-        if (!enabled_) {
+        if (!_enabled) {
             return false;
         }
 
@@ -57,39 +57,39 @@ namespace rerun_vrs {
         layout.printLayoutCompact(buffer);
         const auto& layout_str = buffer.str();
 
-        rec_->set_time_seconds("timestamp", record.timestamp);
+        _rec->set_time_seconds("timestamp", record.timestamp);
 
         if (record.recordType == vrs::Record::Type::CONFIGURATION) {
             // NOTE this is meta data from the sensor that doesn't change over time and only comes
             // in once in the beginning
-            rec_->log_timeless(entityPath_ + "/configuration", rerun::TextDocument(layout_str));
+            _rec->log_timeless(_entity_path + "/configuration", rerun::TextDocument(layout_str));
 
             // read properties required for logging
             auto& config = getExpectedLayout<IMUConfigurationDataLayout>(layout, blockIndex);
-            hasAccelerometer_ = config.hasAccelerometer_.get();
-            hasGyroscope_ = config.hasGyroscope_.get();
-            hasMagnetometer_ = config.hasMagnetometer_.get();
+            _has_accelerometer = config._has_accelerometer.get();
+            _has_gyroscope = config._has_gyroscope.get();
+            _has_magnetometer = config._has_magnetometer.get();
         }
 
         if (record.recordType == vrs::Record::Type::DATA) {
             auto& data = getExpectedLayout<IMUDataDataLayout>(layout, blockIndex);
 
-            if (hasAccelerometer_) {
+            if (_has_accelerometer) {
                 std::array<float, 3> accelMSec2;
                 if (data.accelMSec2.get(accelMSec2.data(), accelMSec2.size())) {
-                    logAccelerometer(accelMSec2);
+                    log_accelerometer(accelMSec2);
                 }
             }
-            if (hasGyroscope_) {
+            if (_has_gyroscope) {
                 std::array<float, 3> gyroRadSec;
                 if (data.gyroRadSec.get(gyroRadSec.data(), gyroRadSec.size())) {
-                    logGyroscope(gyroRadSec);
+                    log_gyroscope(gyroRadSec);
                 }
             }
-            if (hasMagnetometer_) {
+            if (_has_magnetometer) {
                 std::array<float, 3> magTesla;
                 if (data.magTesla.get(magTesla.data(), magTesla.size())) {
-                    logMagnetometer(magTesla);
+                    log_magnetometer(magTesla);
                 }
             }
         }
@@ -97,26 +97,26 @@ namespace rerun_vrs {
         return false;
     }
 
-    void IMUPlayer::logAccelerometer(const std::array<float, 3>& accelMSec2) {
-        rec_->log(entityPath_ + "/accelerometer", rerun::Arrows3D::from_vectors({accelMSec2}));
-        rec_->log(entityPath_ + "/accelerometer/x", rerun::TimeSeriesScalar(accelMSec2[0]));
-        rec_->log(entityPath_ + "/accelerometer/y", rerun::TimeSeriesScalar(accelMSec2[1]));
-        rec_->log(entityPath_ + "/accelerometer/z", rerun::TimeSeriesScalar(accelMSec2[2]));
+    void IMUPlayer::log_accelerometer(const std::array<float, 3>& accelMSec2) {
+        _rec->log(_entity_path + "/accelerometer", rerun::Arrows3D::from_vectors({accelMSec2}));
+        _rec->log(_entity_path + "/accelerometer/x", rerun::TimeSeriesScalar(accelMSec2[0]));
+        _rec->log(_entity_path + "/accelerometer/y", rerun::TimeSeriesScalar(accelMSec2[1]));
+        _rec->log(_entity_path + "/accelerometer/z", rerun::TimeSeriesScalar(accelMSec2[2]));
     }
 
-    void IMUPlayer::logGyroscope(const std::array<float, 3>& gyroRadSec) {
-        rec_->log(entityPath_ + "/gyroscope/x", rerun::TimeSeriesScalar(gyroRadSec[0]));
-        rec_->log(entityPath_ + "/gyroscope/y", rerun::TimeSeriesScalar(gyroRadSec[1]));
-        rec_->log(entityPath_ + "/gyroscope/z", rerun::TimeSeriesScalar(gyroRadSec[2]));
+    void IMUPlayer::log_gyroscope(const std::array<float, 3>& gyroRadSec) {
+        _rec->log(_entity_path + "/gyroscope/x", rerun::TimeSeriesScalar(gyroRadSec[0]));
+        _rec->log(_entity_path + "/gyroscope/y", rerun::TimeSeriesScalar(gyroRadSec[1]));
+        _rec->log(_entity_path + "/gyroscope/z", rerun::TimeSeriesScalar(gyroRadSec[2]));
     }
 
-    void IMUPlayer::logMagnetometer(const std::array<float, 3>& magTesla) {
-        rec_->log(entityPath_ + "/magnetometer/x", rerun::TimeSeriesScalar(magTesla[0]));
-        rec_->log(entityPath_ + "/magnetometer/y", rerun::TimeSeriesScalar(magTesla[1]));
-        rec_->log(entityPath_ + "/magnetometer/z", rerun::TimeSeriesScalar(magTesla[2]));
+    void IMUPlayer::log_magnetometer(const std::array<float, 3>& magTesla) {
+        _rec->log(_entity_path + "/magnetometer/x", rerun::TimeSeriesScalar(magTesla[0]));
+        _rec->log(_entity_path + "/magnetometer/y", rerun::TimeSeriesScalar(magTesla[1]));
+        _rec->log(_entity_path + "/magnetometer/z", rerun::TimeSeriesScalar(magTesla[2]));
     }
 
-    bool mightContainIMUData(const vrs::StreamId& id) {
+    bool might_contain_imu_data(const vrs::StreamId& id) {
         return id.getTypeId() == vrs::RecordableTypeId::SlamImuData ||
                id.getTypeId() == vrs::RecordableTypeId::SlamMagnetometerData ||
                id.getTypeId() == vrs::RecordableTypeId::ImuRecordableClass;

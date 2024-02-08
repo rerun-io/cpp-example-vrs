@@ -21,7 +21,7 @@
 #include <vrs/DataLayout.h>
 #include <vrs/utils/PixelFrame.h>
 
-#include "FramePlayer.h"
+#include "frame_player.hpp"
 
 namespace rerun_vrs {
 
@@ -32,12 +32,12 @@ namespace rerun_vrs {
     };
 
     FramePlayer::FramePlayer(vrs::StreamId id, std::shared_ptr<const rerun::RecordingStream> rec)
-        : id_{id}, rec_{rec}, entityPath_{rerun::new_entity_path({id.getName()})} {}
+        : _id{id}, _rec{rec}, _entity_path{rerun::new_entity_path({id.getName()})} {}
 
     bool FramePlayer::onDataLayoutRead(
-        const vrs::CurrentRecord& record, size_t blockIndex, vrs::DataLayout& layout
+        const vrs::CurrentRecord& record, size_t block_index, vrs::DataLayout& layout
     ) {
-        if (!enabled_) {
+        if (!_enabled) {
             return false;
         }
 
@@ -45,42 +45,42 @@ namespace rerun_vrs {
         layout.printLayoutCompact(buffer);
         const auto& layout_str = buffer.str();
 
-        rec_->set_time_seconds("timestamp", record.timestamp);
+        _rec->set_time_seconds("timestamp", record.timestamp);
 
         if (record.recordType == vrs::Record::Type::CONFIGURATION) {
             // NOTE this is meta data from the sensor that doesn't change over time and only comes
             // in once in the beginning
-            rec_->log_timeless(entityPath_ + "/configuration", rerun::TextDocument(layout_str));
+            _rec->log_timeless(_entity_path + "/configuration", rerun::TextDocument(layout_str));
         }
 
         if (record.recordType == vrs::Record::Type::DATA) {
-            auto& config = getExpectedLayout<FrameNumberDataLayout>(layout, blockIndex);
+            auto& config = getExpectedLayout<FrameNumberDataLayout>(layout, block_index);
             uint64_t frame_number;
             if (config.frameNumber.get(frame_number)) {
-                rec_->set_time_sequence("frame_number", frame_number);
+                _rec->set_time_sequence("frame_number", frame_number);
             }
 
             // this is meta data per record and changes over time
-            rec_->log(entityPath_ + "/data", rerun::TextDocument(layout_str));
+            _rec->log(_entity_path + "/data", rerun::TextDocument(layout_str));
         }
 
         return true;
     }
 
     bool FramePlayer::onImageRead(
-        const vrs::CurrentRecord& record, size_t /*blockIndex*/,
-        const vrs::ContentBlock& contentBlock
+        const vrs::CurrentRecord& record, size_t /*block_index*/,
+        const vrs::ContentBlock& content_block
     ) {
         std::shared_ptr<vrs::utils::PixelFrame> frame;
-        bool frameValid = vrs::utils::PixelFrame::readFrame(frame, record.reader, contentBlock);
+        bool frame_valid = vrs::utils::PixelFrame::readFrame(frame, record.reader, content_block);
 
-        if (frameValid) {
+        if (frame_valid) {
             // Log image to Rerun
             // NOTE Rerun assumes row major ordering for Images (i.e., TensorData) without any stride.
             //   Right now we don't check this properly, and just assume that there is no extra padding
             //   per pixel and / or per row.
-            rec_->log(
-                entityPath_,
+            _rec->log(
+                _entity_path,
                 rerun::Image(
                     {frame->getHeight(),
                      frame->getWidth(),
@@ -90,9 +90,9 @@ namespace rerun_vrs {
             );
         } else {
             std::cout << "Failed reading image with format \""
-                      << contentBlock.image().getImageFormatAsString() << "\". Disabling player."
+                      << content_block.image().getImageFormatAsString() << "\". Disabling player."
                       << std::endl;
-            enabled_ = false;
+            _enabled = false;
         }
         return true;
     }

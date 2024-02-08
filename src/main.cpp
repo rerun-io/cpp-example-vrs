@@ -11,6 +11,8 @@
 #include "IMUPlayer.h"
 
 int main(int argc, const char* argv[]) {
+    std::cout << "Rerun SDK Version:" << rerun::version_string() << std::endl;
+
     auto rec = std::make_shared<const rerun::RecordingStream>("rerun_example_vrs");
     rec->spawn().exit_on_failure();
 

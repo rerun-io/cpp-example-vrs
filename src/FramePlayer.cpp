@@ -22,7 +22,6 @@
 #include <vrs/utils/PixelFrame.h>
 
 #include "FramePlayer.h"
-#include "utils.h"
 
 namespace rerun_vrs {
 
@@ -33,7 +32,7 @@ namespace rerun_vrs {
     };
 
     FramePlayer::FramePlayer(vrs::StreamId id, std::shared_ptr<const rerun::RecordingStream> rec)
-        : id_{id}, rec_{rec}, entityPath_{add_quotes(id.getName())} {}
+        : id_{id}, rec_{rec}, entityPath_{rerun::new_entity_path({id.getName()})} {}
 
     bool FramePlayer::onDataLayoutRead(
         const vrs::CurrentRecord& record, size_t blockIndex, vrs::DataLayout& layout

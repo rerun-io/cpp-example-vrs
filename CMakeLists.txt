@@ -10,7 +10,7 @@ endif()
 
 # Rerun:
 include(FetchContent)
-FetchContent_Declare(rerun_sdk URL https://github.com/rerun-io/rerun/releases/download/0.11.0/rerun_cpp_sdk.zip)
+FetchContent_Declare(rerun_sdk URL https://github.com/rerun-io/rerun/releases/download/0.12.0/rerun_cpp_sdk.zip)
 FetchContent_MakeAvailable(rerun_sdk)
 
 # VRS:
@@ -22,6 +22,6 @@ FetchContent_MakeAvailable(vrslib)
 
 find_package(fmt REQUIRED)
 
-add_executable(rerun_vrs_example src/main.cpp src/FramePlayer.cpp src/IMUPlayer.cpp src/utils.cpp)
+add_executable(rerun_vrs_example src/main.cpp src/FramePlayer.cpp src/IMUPlayer.cpp)
 target_link_libraries(rerun_vrs_example rerun_sdk vrslib vrs_utils fmt)
 target_include_directories(rerun_vrs_example PRIVATE src)

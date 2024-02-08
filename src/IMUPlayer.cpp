@@ -24,7 +24,6 @@
 #include <vrs/utils/PixelFrame.h>
 
 #include "IMUPlayer.h"
-#include "utils.h"
 
 namespace rerun_vrs {
 
@@ -45,7 +44,7 @@ namespace rerun_vrs {
     };
 
     IMUPlayer::IMUPlayer(vrs::StreamId id, std::shared_ptr<const rerun::RecordingStream> rec)
-        : id_{id}, rec_{rec}, entityPath_{add_quotes(id.getName())} {}
+        : id_{id}, rec_{rec}, entityPath_{rerun::new_entity_path({id.getName()})} {}
 
     bool IMUPlayer::onDataLayoutRead(
         const vrs::CurrentRecord& record, size_t blockIndex, vrs::DataLayout& layout
@@ -99,10 +98,7 @@ namespace rerun_vrs {
     }
 
     void IMUPlayer::logAccelerometer(const std::array<float, 3>& accelMSec2) {
-        rec_->log(
-            entityPath_ + "/accelerometer",
-            rerun::Arrows3D::from_vectors({accelMSec2})
-        );
+        rec_->log(entityPath_ + "/accelerometer", rerun::Arrows3D::from_vectors({accelMSec2}));
         rec_->log(entityPath_ + "/accelerometer/x", rerun::TimeSeriesScalar(accelMSec2[0]));
         rec_->log(entityPath_ + "/accelerometer/y", rerun::TimeSeriesScalar(accelMSec2[1]));
         rec_->log(entityPath_ + "/accelerometer/z", rerun::TimeSeriesScalar(accelMSec2[2]));

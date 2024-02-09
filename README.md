@@ -14,6 +14,14 @@ You can download a sample `.vrs` file from <https://www.projectaria.com/datasets
   <source media="(max-width: 1200px)" srcset="https://static.rerun.io/cpp-example-vrs/c13ed42c13ecb65b0ef689533c0525ab97471e21/1200w.png">
 </picture>
 
+**:warning: Out-of-order logging :warning:**
+
+This example makes heavy use of out-of-order logging.
+
+The speedups added in Rerun 0.13 slow down ingestion speed for out of order logs.
+An update that makes the speedup work well in that case as well will come in the following release.
+An update that fixes this is planned for 0.13.1. Follow the progress [here](https://github.com/rerun-io/rerun/issues/4810).
+
 ## Compile and run using `pixi`
 The easiest way to get started is to install [pixi](https://prefix.dev/docs/pixi/overview).
 

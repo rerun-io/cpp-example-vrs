@@ -14,6 +14,7 @@ You can download a sample `.vrs` file from <https://www.projectaria.com/datasets
   <source media="(max-width: 1200px)" srcset="https://static.rerun.io/cpp-example-vrs/c13ed42c13ecb65b0ef689533c0525ab97471e21/1200w.png">
 </picture>
 
+
 ## Compile and run using `pixi`
 The easiest way to get started is to install [pixi](https://prefix.dev/docs/pixi/overview).
 
@@ -28,8 +29,8 @@ If you choose not to use pixi, you will need to install a few things yourself be
 The Rerun C++ SDK works by connecting to an awaiting Rerun Viewer over TCP.
 
 If you need to install the viewer, follow the [installation guide](https://www.rerun.io/docs/getting-started/installing-viewer). Two of the more common ways to install the Rerun Viewer are:
-* Via cargo: `cargo install rerun-cli@0.12.0`
-* Via pip: `pip install rerun-sdk==0.12.0`
+* Via cargo: `cargo install rerun-cli@0.14.1`
+* Via pip: `pip install rerun-sdk==0.14.1`
 
 After you have installed it, you should be able to type `rerun` in your terminal to start the viewer.
 
@@ -52,6 +53,6 @@ We haven't tried getting this example working on Windows yet, because VRS has no
 
 
 ## Known limitations with Rerun
-* 0.10.0 of the Rerun C++ SDK accidentally shipped with parts of it compiled in Debug build, making it unnecessarily slow. This will be fixed in [Rerun 0.10.1](https://github.com/rerun-io/rerun/milestone/11).
-* Time-scalar plots are currently very slow in Rerun, something we're [actively working on](https://github.com/rerun-io/rerun/issues/374).
-* [Points cloud sizes are limited](https://github.com/rerun-io/rerun/issues/3076), and [big point clouds are slow](https://github.com/rerun-io/rerun/issues/1136).
+This example makes heavy use of out-of-order logging.
+This leads to slow ingestion speeds in Rerun, especially for plots.
+Follow the progress on this [here](https://github.com/rerun-io/rerun/issues/4810).

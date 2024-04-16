@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
+# Copied from https://github.com/rerun-io/rerun_template
 
 """
 The script has two purposes.
 
 After using `rerun_template` as a template, run this to clean out things you don't need.
-Use `scripts/setup_template.py init --languages cpp,rust,python` for this.
+Use `scripts/template_update.py init --languages cpp,rust,python` for this.
 
 Update an existing repository with the latest changes from the template.
-Use `scripts/setup_template.py update --languages cpp,rust,python` for this.
+Use `scripts/template_update.py update --languages cpp,rust,python` for this.
 
 In either case, make sure the list of languages matches the languages you want to support.
 You can also use `--dry-run` to see what would happen without actually changing anything.
@@ -45,7 +46,6 @@ PYTHON_FILES = {
 
 # Files requires by Rust, but not by both C++ or Python
 RUST_FILES = {
-    ".clang-format",
     ".github/workflows/rust.yml",
     "bacon.toml",
     "Cargo.lock",
@@ -117,7 +117,8 @@ def update(languages: Set[str], dry_run: bool) -> None:
                     continue
                 if rel_path.startswith("src/"):
                     continue
-                if rel_path == "README.md":
+
+                if rel_path in {"README.md", "pixi.lock", "Cargo.lock"}:
                     continue
 
                 if rel_path not in files_to_ignore:

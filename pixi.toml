@@ -42,7 +42,7 @@ build = { cmd = "cmake --build build --config RelWithDebInfo --target all", depe
 ] }
 
 # Run C++ example
-example = { cmd = "build/rerun_template", depends_on = ["build"] }
+example = { cmd = "build/rerun_vrs_example", depends_on = ["build"] }
 
 # Format C++ code
 cpp-fmt = { cmd = "clang-format -i src/*.[hc]pp" }

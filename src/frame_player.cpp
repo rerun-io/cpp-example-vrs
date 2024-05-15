@@ -50,7 +50,7 @@ namespace rerun_vrs {
         if (record.recordType == vrs::Record::Type::CONFIGURATION) {
             // NOTE this is meta data from the sensor that doesn't change over time and only comes
             // in once in the beginning
-            _rec->log_timeless(_entity_path + "/configuration", rerun::TextDocument(layout_str));
+            _rec->log_static(_entity_path + "/configuration", rerun::TextDocument(layout_str));
         }
 
         if (record.recordType == vrs::Record::Type::DATA) {

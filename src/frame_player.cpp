@@ -79,13 +79,18 @@ namespace rerun_vrs {
             // NOTE Rerun assumes row major ordering for Images (i.e., TensorData) without any stride.
             //   Right now we don't check this properly, and just assume that there is no extra padding
             //   per pixel and / or per row.
+            auto channels = frame->getSpec().getChannelCountPerPixel();
+            auto color_model = channels == 1   ? rerun::ColorModel::L
+                               : channels == 3 ? rerun::ColorModel::RGB
+                                               : rerun::ColorModel::RGBA;
+
             _rec->log(
                 _entity_path,
                 rerun::Image(
-                    {frame->getHeight(),
-                     frame->getWidth(),
-                     frame->getSpec().getChannelCountPerPixel()},
-                    frame->getBuffer()
+                    frame->getBuffer(),
+                    {frame->getWidth(), frame->getHeight()},
+                    color_model,
+                    rerun::datatypes::ChannelDatatype::U8
                 )
             );
         } else {

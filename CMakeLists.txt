@@ -10,7 +10,7 @@ endif()
 
 # Rerun:
 include(FetchContent)
-FetchContent_Declare(rerun_sdk URL https://build.rerun.io/commit/8da8be1/rerun_cpp_sdk.zip)
+FetchContent_Declare(rerun_sdk URL https://build.rerun.io/commit/dd025f1/rerun_cpp_sdk.zip )
 FetchContent_MakeAvailable(rerun_sdk)
 
 # VRS:

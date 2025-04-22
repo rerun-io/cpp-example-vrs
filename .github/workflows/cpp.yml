@@ -1,5 +1,10 @@
 # Copied from https://github.com/rerun-io/rerun_template
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    types: [ opened, synchronize ]
 
 name: C++
 
@@ -10,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: prefix-dev/setup-pixi@v0.8.0
+      - uses: prefix-dev/setup-pixi@v0.8.1
         with:
           pixi-version: v0.26.1
           cache: true

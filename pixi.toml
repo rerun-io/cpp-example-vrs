@@ -37,12 +37,12 @@ print-env = { cmd = "echo $PATH" }
 prepare = "cmake -G 'Ninja' -B build -S . -DCMAKE_BUILD_TYPE=RelWithDebInfo"
 
 # Build C++ example
-build = { cmd = "cmake --build build --config RelWithDebInfo --target all", depends_on = [
+build = { cmd = "cmake --build build --config RelWithDebInfo --target all", depends-on = [
     "prepare",
 ] }
 
 # Run C++ example
-example = { cmd = "build/rerun_vrs_example", depends_on = ["build"] }
+example = { cmd = "build/rerun_vrs_example", depends-on = ["build"] }
 
 # Format C++ code
 cpp-fmt = { cmd = "clang-format -i src/*.[hc]pp" }
@@ -55,8 +55,13 @@ cpp-fmt-check = { cmd = "clang-format --dry-run --Werror -i src/*.[hc]pp" }
 
 # Run first ruff fix, then ruff format, order is important see also https://twitter.com/charliermarsh/status/1717229721954799727
 py-fmt = "ruff check --fix --config pyproject.toml . && ruff format --config pyproject.toml ."
-py-fmt-check = "ruff format --check --config pyproject.toml"
+py-fmt-check = "ruff check --config pyproject.toml . && ruff format --check --config pyproject.toml"
 py-lint = "mypy --install-types --non-interactive --no-warn-unused-ignore"
+
+# ------------------------------------------------------------------------------------------
+# General stuff:
+lint-typos = "typos"
+
 
 [dependencies]
 # C++ build-tools:
@@ -82,5 +87,8 @@ ruff = "0.3.7"
 
 types-requests = ">=2.31,<3" # mypy type hint stubs for generate_changelog.py
 
+# General stuff:
+typos = ">=1.16.20"
+
 [target.linux-64.dependencies]
-sysroot_linux-64 = ">=2.17,<3" # rustc 1.78+ requires glibc 2.17+, see https://blog.rust-lang.org/2022/08/01/Increasing-glibc-kernel-requirements.html
+sysroot_linux-64 = ">=2.17,<3" # rustc 1.64+ requires glibc 2.17+, see https://blog.rust-lang.org/2022/08/01/Increasing-glibc-kernel-requirements.html

@@ -66,24 +66,24 @@ lint-typos = "typos"
 [dependencies]
 # C++ build-tools:
 boost = "1.84.0.*"
-cmake = "3.27.6"
-clang-tools = ">=15,<16" # clang-format
+clang-tools = "16.0.6.*"          # clang-format
+cmake = "3.27.6.*"
 cxx-compiler = "1.6.0.*"
-ninja = "1.11.1"
+ninja = "1.11.1.*"
 
 # Required by this example:
 fmt = "10.1.1.*"
-gtest = "1.14.0"
+gtest = "1.14.0.*"
 libjpeg-turbo = "2.1.4.*"
 libpng = "1.6.39.*"
 lz4 = "4.3.2.*"
 portaudio = "19.6.0.*"
-xxhash = "0.8.2"
+xxhash = "0.8.2.*"
 zlib = "1.2.13.*"
 
 # Python stuff:
-mypy = "1.8.0"
-ruff = "0.3.7"
+mypy = "1.14.1.*"
+ruff = "0.11.6.*"
 
 types-requests = ">=2.31,<3" # mypy type hint stubs for generate_changelog.py
 

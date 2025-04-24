@@ -57,7 +57,7 @@ namespace rerun_vrs {
             auto& config = getExpectedLayout<FrameNumberDataLayout>(layout, block_index);
             uint64_t frame_number;
             if (config.frameNumber.get(frame_number)) {
-                _rec->set_time_sequence("frame_number", frame_number);
+                _rec->set_time_sequence("frame_number", static_cast<int64_t>(frame_number));
             }
 
             // this is meta data per record and changes over time

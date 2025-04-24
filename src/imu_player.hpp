@@ -38,8 +38,8 @@ namespace rerun_vrs {
         void log_gyroscope(const std::array<float, 3>& gyroRadSec);
         void log_magnetometer(const std::array<float, 3>& magTesla);
 
-        std::shared_ptr<const rerun::RecordingStream> _rec;
         vrs::StreamId _id;
+        std::shared_ptr<const rerun::RecordingStream> _rec;
         std::string _entity_path;
         bool _enabled{true};
         bool _has_accelerometer;

@@ -22,9 +22,6 @@ set(BUILD_TOOLS OFF) # VRS tools
 set(BUILD_SAMPLES OFF) # VRS sample code and sample apps
 FetchContent_Declare(vrslib URL https://github.com/facebookresearch/vrs/archive/refs/tags/v1.1.0.zip)
 FetchContent_MakeAvailable(vrslib)
-if(NOT MSVC)
-    target_compile_options(vrslib PRIVATE -w)  # Disable all warnings for VRS source code
-endif()
 
 find_package(fmt REQUIRED)
 
@@ -111,6 +108,10 @@ else()
             -Wno-unknown-warning-option # Otherwise older clang will complain about `-Wno-unsafe-buffer-usage`
         )
     endif()
+
+    target_compile_options(${TARGET_NAME} PRIVATE
+        -Wno-rerun-type # VRS source code breaks this
+    )
 
     # CMAKE_COMPILE_WARNING_AS_ERROR is only directly supported starting in CMake `3.24`
     # https://cmake.org/cmake/help/latest/prop_tgt/COMPILE_WARNING_AS_ERROR.html

@@ -28,6 +28,7 @@ find_package(fmt REQUIRED)
 add_executable(${TARGET_NAME} src/main.cpp src/frame_player.cpp src/imu_player.cpp)
 target_link_libraries(${TARGET_NAME} rerun_sdk vrslib vrs_utils fmt)
 target_include_directories(${TARGET_NAME} PRIVATE src)
+target_include_directories(${TARGET_NAME} SYSTEM PRIVATE ${rerun_sdk_SOURCE_DIR}) # Ignore warnings in Rerun SDK headers
 target_include_directories(${TARGET_NAME} SYSTEM PRIVATE ${vrslib_SOURCE_DIR}) # Ignore warnings in VRS headers
 
 
@@ -58,6 +59,8 @@ else()
         -Wall
         -Wcast-align
         -Wcast-qual
+        -Wdeprecated
+        -Wdeprecated-declarations
         -Werror=deprecated-declarations
         -Wextra
         -Wformat=2
@@ -101,6 +104,8 @@ else()
             -Wno-reserved-id-macro
             -Wno-reserved-identifier
             -Wno-unused-macros
+            -Wno-unsafe-buffer-usage # Not sure why we need this, but we do.
+            -Wno-unknown-warning-option # Otherwise older clang will complain about `-Wno-unsafe-buffer-usage`
         )
     endif()
 

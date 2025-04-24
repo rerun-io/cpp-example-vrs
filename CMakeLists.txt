@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16...3.27)
 
-set(CMAKE_COMPILE_WARNING_AS_ERROR ON) # Treat warnings as errors?
+set(CMAKE_COMPILE_WARNING_AS_ERROR OFF) # TODO(emilk): If we turn this ON, VRS fails to compile
 
 set(TARGET_NAME rerun_vrs_example)
 project(${TARGET_NAME} LANGUAGES CXX)
@@ -108,10 +108,6 @@ else()
             -Wno-unknown-warning-option # Otherwise older clang will complain about `-Wno-unsafe-buffer-usage`
         )
     endif()
-
-    target_compile_options(${TARGET_NAME} PRIVATE
-        -Wno-rerun-type # VRS source code breaks this
-    )
 
     # CMAKE_COMPILE_WARNING_AS_ERROR is only directly supported starting in CMake `3.24`
     # https://cmake.org/cmake/help/latest/prop_tgt/COMPILE_WARNING_AS_ERROR.html

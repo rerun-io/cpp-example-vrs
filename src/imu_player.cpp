@@ -108,11 +108,6 @@ namespace rerun_vrs {
 
     void IMUPlayer::log_magnetometer(const std::array<float, 3>& magTesla) {
         _rec->log(_entity_path + "/magnetometer", rerun::Scalars(magTesla));
-
-        if (false) {
-            // TODO: remove, once we figure out why this doesn't generate a warning
-            _rec->log(_entity_path + "/magnetometer/z", rerun::Scalar(magTesla[2]));
-        }
     }
 
     bool might_contain_imu_data(const vrs::StreamId& id) {

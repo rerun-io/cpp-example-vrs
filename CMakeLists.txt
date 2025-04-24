@@ -22,6 +22,13 @@ set(BUILD_TOOLS OFF) # VRS tools
 set(BUILD_SAMPLES OFF) # VRS sample code and sample apps
 FetchContent_Declare(vrslib URL https://github.com/facebookresearch/vrs/archive/refs/tags/v1.1.0.zip)
 FetchContent_MakeAvailable(vrslib)
+if(NOT MSVC)
+# Disable warnings for VRS source files:
+    get_target_property(VRS_TYPE vrslib TYPE)
+    if(VRS_TYPE STREQUAL "STATIC_LIBRARY")
+        target_compile_options(vrslib PRIVATE -w)  # Disable all warnings for VRS
+    endif()
+endif()
 
 find_package(fmt REQUIRED)
 

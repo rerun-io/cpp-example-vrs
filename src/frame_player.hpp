@@ -36,8 +36,8 @@ namespace rerun_vrs {
             override;
 
       private:
-        std::shared_ptr<const rerun::RecordingStream> _rec;
         vrs::StreamId _id;
+        std::shared_ptr<const rerun::RecordingStream> _rec;
         std::string _entity_path;
         bool _enabled{true};
     };

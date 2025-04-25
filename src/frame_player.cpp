@@ -45,7 +45,7 @@ namespace rerun_vrs {
         layout.printLayoutCompact(buffer);
         const auto& layout_str = buffer.str();
 
-        _rec->set_time_seconds("timestamp", record.timestamp);
+        _rec->set_time_duration_secs("timestamp", record.timestamp);
 
         if (record.recordType == vrs::Record::Type::CONFIGURATION) {
             // NOTE this is meta data from the sensor that doesn't change over time and only comes

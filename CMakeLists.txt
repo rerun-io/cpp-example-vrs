@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16...3.27)
 
-set(CMAKE_COMPILE_WARNING_AS_ERROR OFF) # TODO(emilk): If we turn this ON, VRS fails to compile
+set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 
 set(TARGET_NAME rerun_vrs_example)
 project(${TARGET_NAME} LANGUAGES CXX)
@@ -61,7 +61,6 @@ else()
         -Wcast-qual
         -Wdeprecated
         -Wdeprecated-declarations
-        -Werror=deprecated-declarations
         -Wextra
         -Wformat=2
         -Wmissing-include-dirs

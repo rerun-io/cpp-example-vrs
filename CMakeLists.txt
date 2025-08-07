@@ -102,12 +102,15 @@ else()
             -Wno-padded
             -Wno-reserved-id-macro
             -Wno-reserved-identifier
-            -Wno-return-type # VRS fails this
             -Wno-unknown-warning-option # Otherwise older clang will complain about `-Wno-unsafe-buffer-usage`
             -Wno-unsafe-buffer-usage # Not sure why we need this, but we do.
             -Wno-unused-macros
         )
     endif()
+
+    target_compile_options(${TARGET_NAME} PRIVATE
+        -Wno-return-type # VRS fails this
+    )
 
     # CMAKE_COMPILE_WARNING_AS_ERROR is only directly supported starting in CMake `3.24`
     # https://cmake.org/cmake/help/latest/prop_tgt/COMPILE_WARNING_AS_ERROR.html

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16...3.27)
 
-set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
+set(CMAKE_COMPILE_WARNING_AS_ERROR OFF) # TODO(emilk): If we turn this ON, VRS fails to compile
 
 set(TARGET_NAME rerun_vrs_example)
 project(${TARGET_NAME} LANGUAGES CXX)
@@ -13,7 +13,7 @@ endif()
 
 # Rerun:
 include(FetchContent)
-FetchContent_Declare(rerun_sdk URL https://github.com/rerun-io/rerun/releases/download/0.23.0/rerun_cpp_sdk.zip)
+FetchContent_Declare(rerun_sdk URL https://github.com/rerun-io/rerun/releases/download/0.24.0/rerun_cpp_sdk.zip)
 FetchContent_MakeAvailable(rerun_sdk)
 
 # VRS:
@@ -61,6 +61,7 @@ else()
         -Wcast-qual
         -Wdeprecated
         -Wdeprecated-declarations
+        -Werror=deprecated-declarations
         -Wextra
         -Wformat=2
         -Wmissing-include-dirs
@@ -102,11 +103,15 @@ else()
             -Wno-padded
             -Wno-reserved-id-macro
             -Wno-reserved-identifier
-            -Wno-unused-macros
-            -Wno-unsafe-buffer-usage # Not sure why we need this, but we do.
             -Wno-unknown-warning-option # Otherwise older clang will complain about `-Wno-unsafe-buffer-usage`
+            -Wno-unsafe-buffer-usage # Not sure why we need this, but we do.
+            -Wno-unused-macros
         )
     endif()
+
+    target_compile_options(${TARGET_NAME} PRIVATE
+        -Wno-return-type # VRS fails this
+    )
 
     # CMAKE_COMPILE_WARNING_AS_ERROR is only directly supported starting in CMake `3.24`
     # https://cmake.org/cmake/help/latest/prop_tgt/COMPILE_WARNING_AS_ERROR.html

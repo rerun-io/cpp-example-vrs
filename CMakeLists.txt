@@ -102,9 +102,10 @@ else()
             -Wno-padded
             -Wno-reserved-id-macro
             -Wno-reserved-identifier
-            -Wno-unused-macros
-            -Wno-unsafe-buffer-usage # Not sure why we need this, but we do.
+            -Wno-return-type # VRS fails this
             -Wno-unknown-warning-option # Otherwise older clang will complain about `-Wno-unsafe-buffer-usage`
+            -Wno-unsafe-buffer-usage # Not sure why we need this, but we do.
+            -Wno-unused-macros
         )
     endif()
 

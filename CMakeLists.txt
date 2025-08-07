@@ -13,7 +13,7 @@ endif()
 
 # Rerun:
 include(FetchContent)
-FetchContent_Declare(rerun_sdk URL https://github.com/rerun-io/rerun/releases/download/0.24.0/rerun_cpp_sdk.zip)
+FetchContent_Declare(rerun_sdk URL https://build.rerun.io/commit/2c27f0f/rerun_cpp_sdk.zip) # 0.24.1-rc.3
 FetchContent_MakeAvailable(rerun_sdk)
 
 # VRS:

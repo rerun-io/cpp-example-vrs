@@ -66,6 +66,7 @@ lint-typos = "typos"
 [dependencies]
 # C++ build-tools:
 boost = "1.84.0.*"
+ccache = "*"
 clang-tools = "16.0.6.*"          # clang-format
 cmake = "3.27.6.*"
 cxx-compiler = "1.6.0.*"
